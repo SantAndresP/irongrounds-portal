@@ -8,17 +8,25 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 // User model.
-const UserModel = require("../models/User.model");
+const UserModel = require("../models/userModel.js");
 
 /*
  * Routes
  */
-// Sign up.
+// Sign-up.
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
 
+// Log-in.
+router.get("/login", (req, res) => {
+  res.render("auth/login");
+});
+
+// Sign-up post.
 router.post("/signup", (req, res) => {
+  const { username, password } = req.body;
+
   bcrypt.genSalt(10).then((salt) => {
     bcrypt
       .hash(password, salt)
@@ -30,3 +38,43 @@ router.post("/signup", (req, res) => {
       });
   });
 });
+
+// Log-in post.
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  UserModel.findOne({ username: username }).then((data) => {
+    bcrypt
+      .compare(password, data.password)
+      .then((result) => {
+        if (result) {
+          // I'm not sure what this is doing.
+          req.session.loggedUser = data;
+
+          res.locals.showFox = req.session.loggedUser;
+
+          res.redirect("/");
+        } else {
+          res
+            .status(500)
+            .render("auth/login", { error: "Passwords do not match." });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res
+          .status(500)
+          .render("auth/login", { error: "Something went wrong. Try again." });
+      });
+  });
+});
+
+//Log-out.
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+
+  res.locals.showFox = false;
+  res.redirect("/");
+});
+
+module.exports = router;

@@ -54,6 +54,25 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 // Default page title.
 app.locals.title = "Express - Generated with IronGenerator";
 
+// Importing `connect-mongo` and `express-session`.
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
+app.use(
+  session({
+    secret: "IronSecret",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // Always in milliseconds.
+    },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60, // Always in seconds.
+    }),
+  })
+);
+
 /*
  * Routes middleware.
  */

@@ -1,0 +1,21 @@
+<!-- Sign in form. -->
+<form class="ui form" action="/login" method="POST">
+
+  <div class="field">
+    <label>Author name</label>
+    <input type="text" name="username" placeholder="Author name">
+  </div>
+
+  <div class="field">
+    <label>password</label>
+    <input type="password" name="password" placeholder="Password">
+  </div>
+
+  <button class="ui button" type="submit">Log In</button>
+</form>
+
+<div id="error-message">
+  {{#if error}}
+  <p>{{error}} 💣</p>
+  {{/if }}
+</div>
