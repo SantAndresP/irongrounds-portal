@@ -64,4 +64,24 @@ h1, h2 {
 .auth__header {
   text-align: center; }
 
+.game__main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px; }
+
+#game__screenshot {
+  object-fit: contain;
+  width: 800px;
+  box-shadow: 2px 3px 4px black; }
+
+.game__play {
+  margin: 20px; }
+
+.playButton {
+  width: 300px; }
+
+.game__description {
+  margin: 50px;
+  padding: 30px; }
+
 /*# sourceMappingURL=style.css.map */
