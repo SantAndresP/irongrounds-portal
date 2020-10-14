@@ -1,15 +1,39 @@
 <!-- Sign up form. -->
-<form class="ui form" action="/signup" method="POST">
+<div class="auth__container">
+  <div class="auth__containerChild">
+    <h2 class="auth__header">Sign up</h2>
 
-  <div class="field">
-    <label>Author name</label>
-    <input type="text" name="username" placeholder="Author name">
+    <form class="ui large form" action="/signup" method="POST">
+
+      <div class="field" id="auth__field">
+        <label>Username</label>
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" name="username" placeholder="Username">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+      </div>
+
+      <button class="ui fluid large orange submit button" type="submit">Sign Up</button>
+      {{#if error}}
+      <div class="ui negative message">
+        <i class="close icon"></i>
+        <div class="header">
+          Login failed.
+        </div>
+        <ul class="list">
+          <li>{{error}} 💣</li>
+        </ul>
+      </div>
+      {{/if }}
+    </form>
   </div>
 
-  <div class="field">
-    <label>Password</label>
-    <input type="password" name="password" placeholder="Password">
-  </div>
-
-  <button class="ui button" type="submit">Sign Up</button>
-</form>
+</div>

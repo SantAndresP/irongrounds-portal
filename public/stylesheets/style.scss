@@ -2,6 +2,9 @@
 // theme: #100B0E
 // link: #FDA237
 
+@import url("https://use.typekit.net/ygp8kyv.css");
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -10,3 +13,78 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1, h2 {
+  font-family: gopher, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+//=====index styling=====//
+.index__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 100px;
+}
+
+
+.index__gameList {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.index__ranking {
+  margin-top: 20px;
+  padding: 30px;
+  margin-right: 20px;
+  max-width: 500px;
+}
+
+.index__weekOfGames,
+.index__featuredGames {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 30px;
+
+}
+
+.index__weekOfGamesList,
+.index__featuredGamesList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+
+.index__featuredGames {
+  align-items: center;
+}
+
+//=====Auth=====//
+.auth__container{
+  padding: 20px;             
+  height: 800px;             
+  width: 100%;             
+  position: relative;  
+}
+
+.auth__containerChild{
+  position: absolute;         
+  padding: 30px;              
+  top:  0;                    
+  bottom:  0;                 
+  left:  0;                   
+  right:  0;                  
+  margin:  auto;              
+  width:  500px;             
+  height: 500px;  
+}
+
+.auth__header{
+  text-align: center;
+}
+
+//=====Footer=====//

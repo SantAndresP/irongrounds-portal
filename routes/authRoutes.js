@@ -61,7 +61,7 @@ router.post("/login", (req, res) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         res
           .status(500)
           .render("auth/login", { error: "Something went wrong. Try again." });
