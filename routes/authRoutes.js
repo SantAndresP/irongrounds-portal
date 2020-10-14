@@ -51,9 +51,13 @@ router.post("/login", (req, res) => {
           // I'm not sure what this is doing.
           req.session.loggedUser = data;
 
+          const userId = req.session.loggedUser._id;
+
+          console.log(req.session.loggedUser);
+
           res.locals.showFox = req.session.loggedUser;
 
-          res.redirect("/");
+          res.redirect(`/profile/${userId}`);
         } else {
           res
             .status(500)
@@ -69,7 +73,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-//Log-out.
+// Log-out.
 router.get("/logout", (req, res) => {
   req.session.destroy();
 
@@ -77,4 +81,5 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// Exports routes.
 module.exports = router;

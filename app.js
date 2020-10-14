@@ -82,6 +82,9 @@ app.use("/", index);
 const authRoutes = require("./routes/authRoutes");
 app.use("/", authRoutes);
 
+const portalRoutes = require("./routes/portalRoutes");
+app.use("/", portalRoutes);
+
 /*
  * Port.
  */

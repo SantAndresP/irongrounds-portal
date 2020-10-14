@@ -17,6 +17,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    ranking: String,
+    about: String,
+    image: String,
   },
   {
     timestamps: true,
