@@ -17,25 +17,35 @@
     <a class="active item" href="/">
       Home
     </a>
+
     <div class="item right">
       <div class="ui icon input">
         <input type="text" placeholder="Search...">
         <i class="search link icon"></i>
       </div>
     </div>
+
     <div class="menu right">
+
       <a class="item" href="/signup">
         Sign Up
       </a>
-      <a class="item" href="/signin">
+
+      <a class="item" href="/login">
         Sign In
       </a>
-      <a class="ui item">
+
+      <a class="item" href="/logout">
         Logout
       </a>
+
+      {{#if showFox}}
+      <p>🦊</p>
+      {{/if}}
     </div>
   </div>
-  {{{body}}}
+
+  <main>{{{body}}}</main>
 
   <script src="/javascripts/script.js"></script>
 </body>
