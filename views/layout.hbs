@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+    crossorigin="anonymous" />
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
-<body>
 
+<body>
+  <div class="ui secondary  menu">
+    <a class="active item" href="/">
+      Home
+    </a>
+    <div class="item right">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+    <div class="menu right">
+      <a class="item" href="/signup">
+        Sign Up
+      </a>
+      <a class="item" href="/signin">
+        Sign In
+      </a>
+      <a class="ui item">
+        Logout
+      </a>
+    </div>
+  </div>
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>
