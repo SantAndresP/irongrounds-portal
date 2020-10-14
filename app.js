@@ -15,8 +15,15 @@ const path = require("path");
 const app = express();
 
 // Connection to Mongoose.
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/irongrounds";
+
 mongoose
-  .connect("mongodb://localhost/irongrounds-portal", { useNewUrlParser: true })
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
