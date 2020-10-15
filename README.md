@@ -8,75 +8,71 @@ Online entertainment website, where hosts user-generated games.
 
 - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
 - **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
+- **homepage** - As a user I want to be able to access the homepage so that I can access each game without login.
 - **sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
 - **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
 - **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-- **events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
-- **events create** - As a user I want to create an event so that I can invite others to attend
-- **events detail** - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend 
-- **event attend** - As a user I want to be able to attend to event so that the organizers can count me in
+- **game list** - As a user I want to see all the games available so that I can choose which ones I want to play
+- **game create** - As a game owner I want to create a game so that I can make it public.
+- **game detail** - As a user I want to see the game details and attendee list of one game so that I can play.  
+- **game detail edit** - As a game owner I want to be able to edit the detail of the game.
+- **game detail review** - As a user I want to be able to review and comment on the game.
+- **author detail** - As a user I want to be able to see the details(profile, other games) of the author.
+- **author detail edit** - As a game owner I want to be able to edit the details of the profile.
+
 
 ## Backlog
 
 List of other features outside of the MVPs scope
 
-User profile:
-- see my profile
-- upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
-
-Geo Location:
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
-
-Homepage
-- ...
+Review:
+- add comment
+- add rate 
 
 
 ## ROUTES:
 
 - GET / 
   - renders the homepage
-- GET /auth/signup
+- GET /signup
   - redirects to / if user logged in
   - renders the signup form (with flash msg)
-- POST /auth/signup
+- POST /signup
   - redirects to / if user logged in
   - body:
     - username
-    - email
     - password
-- GET /auth/login
+- GET /login
   - redirects to / if user logged in
   - renders the login form (with flash msg)
-- POST /auth/login
+- POST /login
   - redirects to / if user logged in
   - body:
     - username
     - password
-- POST /auth/logout
+- POST /logout
   - body: (empty)
 
-- GET /events
-  - renders the event list + the create form
-- POST /events/create 
+
+- GET /games/:gameId
+  - renders the game detail page
+  - includes the game screen
+  - play button if user want to play on new tab
+
+- POST /profile/:id/create 
   - redirects to / if user is anonymous
+  - post new game
   - body: 
-    - name
-    - date
-    - location
-    - description
-- GET /events/:id
-  - renders the event detail page
-  - includes the list of attendees
-  - attend button if user not attending yet
-- POST /events/:id/attend 
+    - title
+    - about
+    - link
+
+- POST /profile/:id/edit 
   - redirects to / if user is anonymous
-  - body: (empty - the user is already stored in the session)
+   - body: 
+    - username
+    - about
+    - image Url
 
 
 ## Models
@@ -100,6 +96,16 @@ date: Date
 score: Number
 genre: String
 authorComments: String
+review: [ObjectId<Review>]
+``` 
+
+Review model
+
+```
+author: [ObjectId<User>]
+comment: String
+rate: Number
+
 ``` 
 
 ## Links
