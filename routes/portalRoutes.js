@@ -20,22 +20,19 @@ const { route } = require("./authRoutes.js");
 
 // Shows profile page.
 router.get("/profile", (req, res) => {
-  if (req.session.loggedUser) {
-    const id = req.session.loggedUser._id;
+  const { loggedUser } = req.session;
 
-    GameModel.find({ authorId: id })
-      .populate("User")
+  if (loggedUser) {
+    GameModel.find({ authorId: loggedUser._id })
+      .populate("authorId")
       .then((game) => {
-        UserModel.findById(id).then((user) => {
-          console.log(user, game);
-          const info = { user, game };
-          res.render("profile", { info });
-        });
-      });
+        const info = {
+          user: game.length ? game[0].authorId : loggedUser,
+          game,
+        };
 
-    // UserModel.findById(id).then((user) => {
-    //   res.render("profile", { user });
-    // });
+        res.render("profile", { info });
+      });
   } else {
     res.redirect("/login");
   }
@@ -86,18 +83,12 @@ router.get("/profile/upload", (req, res) => {
 });
 
 router.post("/profile/upload", (req, res, next) => {
-  const { title, about, link, image, width, height } = req.body;
   const { username, _id } = req.session.loggedUser;
 
   const newGame = {
     author: username,
     authorId: _id,
-    title,
-    about,
-    link,
-    image,
-    width,
-    height,
+    ...req.body,
   };
 
   GameModel.create(newGame).then(() => {
@@ -110,6 +101,7 @@ router.post("/profile/upload", (req, res, next) => {
 // Games.
 router.get("/games/:gameid", (req, res) => {
   const id = req.params.gameid;
+
   GameModel.findById(id).then((data) => {
     res.render("games/game", { data });
   });
