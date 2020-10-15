@@ -71,8 +71,7 @@ h1, h2 {
 
 #game__screenshot {
   object-fit: contain;
-  width: 800px;
-  box-shadow: 2px 3px 4px black; }
+  width: 800px; }
 
 .game__play {
   margin: 20px; }
