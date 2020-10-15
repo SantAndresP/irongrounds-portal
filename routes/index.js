@@ -21,6 +21,7 @@ router.get("/", (req, res, next) => {
 //   }
 
   res.render("index");
+  // res.render("games/game");
 });
 
 module.exports = router;
