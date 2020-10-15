@@ -3,7 +3,8 @@
   integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 <!-- Game upload form. -->
-<form method="POST" action="/games/{{game._id}}/edit">
+<form method="POST" action="/games/{{game._id}}/edit"
+  onsubmit="return confirm('Are you sure you want to save the changes?');">
   <h2>Edit your game</h2>
 
   <div class="form-group">
@@ -37,4 +38,10 @@
   </div>
 
   <button type="submit" class="btn btn-outline-primary">Save changes</button>
+</form>
+
+<!-- Delete form. -->
+<form method="POST" action="/games/{{game._id}}/delete"
+  onsubmit="return confirm('Are you sure you want to delete this game?');">
+  <button type="submit" class="btn btn-outline-danger">Delete</button>
 </form>

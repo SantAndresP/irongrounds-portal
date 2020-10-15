@@ -15,7 +15,7 @@ const { findById } = require("../models/userModel.js");
 const { route } = require("./authRoutes.js");
 
 /*
- * Routes
+ * Profile routes.
  */
 
 // Shows profile page.
@@ -72,6 +72,10 @@ router.post("/profile/edit", (req, res, next) => {
   });
 });
 
+/*
+ * Game routes.
+ */
+
 // Uploading a game.
 router.get("/profile/upload", (req, res) => {
   if (req.session.loggedUser) {
@@ -111,10 +115,10 @@ router.get("/games/:gameid", (req, res) => {
   });
 });
 
-// Editing game.
+// Editing game GET.
 router.get("/games/:id/edit", (req, res) => {
   const id = req.params.id;
-  const { username, _id } = req.session.loggedUser;
+  const { _id } = req.session.loggedUser;
 
   GameModel.findById(id).then((game) => {
     if (game.authorId == _id) {
@@ -125,6 +129,7 @@ router.get("/games/:id/edit", (req, res) => {
   });
 });
 
+// Editing game POST.
 router.post("/games/:id/edit", (req, res, next) => {
   const id = req.params.id;
 
@@ -137,6 +142,22 @@ router.post("/games/:id/edit", (req, res, next) => {
       console.log("Something has gone horribly wrong.", err);
       res.redirect("/error");
     });
+});
+
+// Deleting game.
+router.post("/games/:id/delete", (req, res, next) => {
+  const id = req.params.id;
+  const { _id } = req.session.loggedUser;
+
+  GameModel.findById(id).then((game) => {
+    if (game.authorId == _id) {
+      GameModel.findOneAndDelete(id).then(() => {
+        res.redirect("/profile");
+      });
+    } else {
+      res.render("permission-denied");
+    }
+  });
 });
 
 // Exports routes.
