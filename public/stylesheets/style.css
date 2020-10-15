@@ -45,13 +45,13 @@ h2, h3 {
 .index__featuredGames {
   align-items: center; }
 
-.auth__container {
+.auth__container, .form__container {
   padding: 20px;
   height: 800px;
   width: 100%;
   position: relative; }
 
-.auth__containerChild {
+.auth__containerChild, .form__containerChild {
   position: absolute;
   padding: 30px;
   top: 0;
@@ -103,9 +103,10 @@ h2, h3 {
   margin: 0 30px; }
 
 .profile__games {
-  margin: 50px !important;
+  margin-bottom: 50px !important;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex-wrap: wrap; }
 
 .games-list__thumbnail {
   width: 300px;
@@ -117,5 +118,9 @@ h2, h3 {
 
 .profile__button__game {
   margin: 10px; }
+
+.form__buttons {
+  display: flex;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map */
