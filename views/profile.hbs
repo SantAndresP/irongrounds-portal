@@ -2,35 +2,50 @@
   <!-- User profile. -->
   <div id="user-profile">
     <p>This is your profile page!</p>
-    <p>Username: {{info.user.username}}</p>
-    <p>Ranking: {{info.user.ranking}}</p>
-    <p>About: {{info.user.about}}</p>
-
-    <a href="/profile/edit">
-      <button class="ui fluid large orange submit button" type="submit">Edit</button>
-    </a>
-
-    <a href="/profile/upload">
-      <button class="ui fluid large orange submit button" type="submit">Upload</button>
-    </a>
-  </div>
-
-
-  <!-- List of games by the user. -->
-  <div id="games-list">
-    {{#each info.game}}
-      <div id="game-info">
-        <img src="{{this.image}}">
-
-        <a href="/games/{{this._id}}">
-          <p>{{this.title}}</p>
+    <div class="profile__info">
+      <img class="ui medium rounded image" src="{{info.user.image}}" class="profile__image">
+      <div class="profile__text">
+        <h2>{{info.user.username}}</h2>
+        <p>{{info.user.ranking}}</p>
+        <p>{{info.user.about}}</p>
+      </div>
+      <div class="profile__buttons">
+        <a href="/profile/edit" class="profile__button">
+          <button class="ui fluid large orange submit button" type="submit">Edit Profile</button>
         </a>
-
-        <a href="/games/{{this._id}}/edit">
-          <button type="submit">Edit</button>
+        <a href="/profile/upload" class="profile__button">
+          <button class="ui fluid large orange submit button" type="submit">Upload Game</button>
         </a>
       </div>
-    {{/each}}
+    </div>
   </div>
 
+</section>
+
+<!-- List of games by the user. -->
+
+<section>
+  {{#if info.game}}
+    <div class="ui link cards profile__games">
+      {{#each info.game}}
+      <div class="card">
+        <a class="image" href="/games/{{this._id}}">
+          <img src="{{this.image}}">
+        </a>
+        <div class="content">
+          <a class="header" href="/games/{{this._id}}">
+            <h3 class="profile__gameTitle">{{this.title}}</h3>
+          </a>
+          <div class="profile__button__game">
+            <a href="/games/{{this._id}}/edit">
+              <button class="ui fluid large orange submit button" type="submit">Edit Game</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <h2>Please upload your game!</h2>
+  {{/if}}
 </section>

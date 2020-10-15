@@ -6,7 +6,8 @@ body {
 a {
   color: #00B7FF; }
 
-h1, h2 {
+h1,
+h2, h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal; }
@@ -82,5 +83,39 @@ h1, h2 {
 .game__description {
   margin: 50px;
   padding: 30px; }
+
+.profile__info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 100px; }
+
+.profile__text {
+  margin: 30px;
+  text-align: center; }
+
+.profile__buttons {
+  display: flex; }
+
+.profile__button,
+.profile__button__game {
+  margin: 0 30px; }
+
+.profile__games {
+  margin: 50px !important;
+  display: flex;
+  justify-content: center; }
+
+.games-list__thumbnail {
+  width: 300px;
+  object-fit: contain;
+  box-shadow: 2px 3px 2px black; }
+
+.profile__gameTitle {
+  text-align: center; }
+
+.profile__button__game {
+  margin: 10px; }
 
 /*# sourceMappingURL=style.css.map */

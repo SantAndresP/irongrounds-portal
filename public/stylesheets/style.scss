@@ -14,14 +14,15 @@ a {
   color: #00B7FF;
 }
 
-h1, h2 {
+h1,
+h2, h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal;
 }
 
 //=====index styling=====//
-.index__container{
+.index__container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -65,52 +66,97 @@ h1, h2 {
 }
 
 //=====Auth=====//
-.auth__container{
-  padding: 20px;             
-  height: 800px;             
-  width: 100%;             
-  position: relative;  
+.auth__container {
+  padding: 20px;
+  height: 800px;
+  width: 100%;
+  position: relative;
 }
 
-.auth__containerChild{
-  position: absolute;         
-  padding: 30px;              
-  top:  0;                    
-  bottom:  0;                 
-  left:  0;                   
-  right:  0;                  
-  margin:  auto;              
-  width:  500px;             
-  height: 500px;  
+.auth__containerChild {
+  position: absolute;
+  padding: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 500px;
 }
 
-.auth__header{
+.auth__header {
   text-align: center;
 }
 
 //=====Game=====//
-.game__main{
+.game__main {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
 }
 
-#game__screenshot{
+#game__screenshot {
   object-fit: contain;
   width: 800px;
 }
 
-.game__play{
+.game__play {
   margin: 20px;
 
 }
 
-.playButton{
+.playButton {
   width: 300px;
 
 }
 
-.game__description{
+.game__description {
   margin: 50px;
   padding: 30px;
+}
+
+//====Profile====//
+.profile__info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.profile__text {
+  margin: 30px;
+  text-align: center;
+}
+
+.profile__buttons {
+  display: flex;
+
+}
+
+.profile__button,
+.profile__button__game {
+  margin: 0 30px;
+}
+
+.profile__games{
+  margin: 50px !important;
+  display: flex;
+  justify-content: center;
+}
+
+
+.games-list__thumbnail {
+  width: 300px;
+  object-fit: contain;
+  box-shadow: 2px 3px 2px black;
+}
+
+.profile__gameTitle{
+  text-align: center;
+}
+
+.profile__button__game {
+  margin: 10px;
 }
