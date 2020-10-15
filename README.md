@@ -29,6 +29,8 @@ Review:
 - add comment
 - add rate 
 
+Search:
+- Search by game title
 
 ## ROUTES:
 
@@ -52,6 +54,10 @@ Review:
     - password
 - POST /logout
   - body: (empty)
+
+- GET /games
+  - renders the game list page
+  - List games by genre
 
 
 - GET /games/:gameId
