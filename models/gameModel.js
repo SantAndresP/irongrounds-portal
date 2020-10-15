@@ -49,7 +49,10 @@ const gameSchema = new mongoose.Schema(
 
     about: String,
 
-    image: String,
+    image: {
+      type: String,
+      default: "https://semantic-ui.com/images/wireframe/square-image.png"
+    },
 
     // date: String,
     // views: Number,

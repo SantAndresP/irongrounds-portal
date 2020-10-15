@@ -7,7 +7,8 @@ a {
   color: #00B7FF; }
 
 h1,
-h2, h3 {
+h2,
+h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal; }
@@ -45,13 +46,15 @@ h2, h3 {
 .index__featuredGames {
   align-items: center; }
 
-.auth__container, .form__container {
+.auth__container,
+.form__container {
   padding: 20px;
   height: 800px;
   width: 100%;
   position: relative; }
 
-.auth__containerChild, .form__containerChild {
+.auth__containerChild,
+.form__containerChild {
   position: absolute;
   padding: 30px;
   top: 0;
@@ -60,7 +63,7 @@ h2, h3 {
   right: 0;
   margin: auto;
   width: 500px;
-  height: 500px; }
+  height: 650px; }
 
 .auth__header {
   text-align: center; }
@@ -119,8 +122,8 @@ h2, h3 {
 .profile__button__game {
   margin: 10px; }
 
-.form__buttons {
-  display: flex;
-  justify-content: space-between; }
+.form__button {
+  margin-top: 10px;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

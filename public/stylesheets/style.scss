@@ -15,7 +15,8 @@ a {
 }
 
 h1,
-h2, h3 {
+h2,
+h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal;
@@ -66,14 +67,16 @@ h2, h3 {
 }
 
 //=====Auth=====//
-.auth__container,.form__container {
+.auth__container,
+.form__container {
   padding: 20px;
   height: 800px;
   width: 100%;
   position: relative;
 }
 
-.auth__containerChild, .form__containerChild {
+.auth__containerChild,
+.form__containerChild {
   position: absolute;
   padding: 30px;
   top: 0;
@@ -82,7 +85,7 @@ h2, h3 {
   right: 0;
   margin: auto;
   width: 500px;
-  height: 500px;
+  height: 650px;
 }
 
 .auth__header {
@@ -140,7 +143,7 @@ h2, h3 {
   margin: 0 30px;
 }
 
-.profile__games{
+.profile__games {
   margin-bottom: 50px !important;
   display: flex;
   justify-content: center;
@@ -153,7 +156,7 @@ h2, h3 {
   box-shadow: 2px 3px 2px black;
 }
 
-.profile__gameTitle{
+.profile__gameTitle {
   text-align: center;
 }
 
@@ -161,7 +164,7 @@ h2, h3 {
   margin: 10px;
 }
 
-.form__buttons{
-  display: flex;
-  justify-content: space-between;
+.form__button {
+  margin-top: 10px;
+  width: 100%;
 }
