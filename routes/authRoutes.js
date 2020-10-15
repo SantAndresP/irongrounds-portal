@@ -55,8 +55,6 @@ router.post("/login", (req, res) => {
 
           console.log(req.session.loggedUser);
 
-          res.locals.showFox = req.session.loggedUser;
-
           res.redirect(`/profile/${userId}`);
         } else {
           res

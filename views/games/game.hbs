@@ -1,16 +1,37 @@
+<!-- Individual game page. -->
 <div class="ui container">
+
+    <div class="game-container">
+        <!-- Game title. -->
+        <div class="game-title">
+            <h3>{{data.title}}</h3>
+        </div>
+
+        <!-- Game iframe. -->
+        <div class="game__image">
+            <iframe width="{{data.width}}" height="{{data.height}}" style="border:none;" src="{{data.link}}"></iframe>
+        </div>
+    </div>
+
+
+    <!-- Info body. -->
     <div class="game__main">
         <div class="game__left">
             <div class="ui card">
+
+                <!-- User picture. -->
                 <div class="image">
                     <img
                         src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg&w=1440">
                 </div>
+
+                <!-- About user. -->
                 <div class="content">
                     <a class="header" href="/user/:userid">Manish</a>
                     <div class="meta">
                         <span class="date">Created on Oct 14th 2020</span>
                     </div>
+
                     <div class="description">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, eum dolorum. Id, vel
                         recusandae laborum mollitia quam beatae neque sed eius dolore a modi quaerat voluptate iste
@@ -19,23 +40,27 @@
                 </div>
             </div>
         </div>
+
+        <!-- Game information. -->
         <div class="game__right">
-            <div class="game__image">
-                <img src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg"
-                    alt="" id="game__screenshot">
-            </div>
-            <div class="game__play">
-                <div class="ui center aligned grid">
-                    <div class="eight wide column">
-                        <a href="https://ibirossi.github.io/M1-Project-Ricksteroids/" target="_blank" class="ui button orange playButton">Play</a>
-                    </div>
-                </div>
+            <!-- Game description. -->
+            <div class="game__description">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ad laudantium molestiae, non
+                    quidem
+                    minus
+                    quisquam beatae cupiditate fugit nostrum temporibus corrupti voluptatum fuga nemo ducimus,
+                    tempore
+                    dolore
+                    laboriosam provident.</p>
             </div>
         </div>
     </div>
-    <div class="game__description">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ad laudantium molestiae, non quidem minus
-            quisquam beatae cupiditate fugit nostrum temporibus corrupti voluptatum fuga nemo ducimus, tempore dolore
-            laboriosam provident.</p>
+
+
+    <!-- Comments. -->
+    <div class="game__play">
+        <div class="ui center aligned grid">
+            <p>Comments go here.</p>
+        </div>
     </div>
 </div>

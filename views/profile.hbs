@@ -1,4 +1,36 @@
-<h1>This is your profile page!</h1>
-<h1>Username: {{user.username}}</h1>
-<h4>Ranking: {{ranking.ranking}}</h4>
-<h4>About: {{about.about}}</h4>
+<section id="profile-body">
+  <!-- User profile. -->
+  <div id="user-profile">
+    <p>This is your profile page!</p>
+    <p>Username: {{info.user.username}}</p>
+    <p>Ranking: {{info.user.ranking}}</p>
+    <p>About: {{info.user.about}}</p>
+
+    <a href="/profile/edit">
+      <button class="ui fluid large orange submit button" type="submit">Edit</button>
+    </a>
+
+    <a href="/profile/upload">
+      <button class="ui fluid large orange submit button" type="submit">Upload</button>
+    </a>
+  </div>
+
+
+  <!-- List of games by the user. -->
+  <div id="games-list">
+    {{#each info.game}}
+      <div id="game-info">
+        <img src="{{this.image}}">
+
+        <a href="/games/{{this._id}}">
+          <p>{{this.title}}</p>
+        </a>
+
+        <a href="/games/{{this._id}}/edit">
+          <button type="submit">Edit</button>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+
+</section>

@@ -4,7 +4,7 @@
 
 Online entertainment website, where hosts user-generated games.
  
-## User Stories
+## User Stories 
 
 - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
 - **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
@@ -54,10 +54,6 @@ Search:
     - password
 - POST /logout
   - body: (empty)
-
-- GET /games
-  - renders the game list page
-  - List games by genre
 
 
 - GET /games/:gameId
