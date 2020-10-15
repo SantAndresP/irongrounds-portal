@@ -17,7 +17,6 @@ const gameSchema = new mongoose.Schema(
     author: {
       type: String,
       required: true,
-      unique: true,
     },
 
     authorId: {
@@ -40,7 +39,14 @@ const gameSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    
+
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+
     about: String,
 
     image: String,
