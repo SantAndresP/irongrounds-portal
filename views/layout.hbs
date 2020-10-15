@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://use.typekit.net/ygp8kyv.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
     crossorigin="anonymous" />
@@ -13,41 +14,67 @@
 </head>
 
 <body>
-  <div class="ui secondary  menu">
-    <a class="active item" href="/">
-      Home
-    </a>
-
-    <div class="item right">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search link icon"></i>
+  <nav class="container">
+    <div class="ui secondary  menu">
+      <a class=" item" href="/">
+        <h1>{{title}}</h1>
+      </a>
+      <div class="item right">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <div class="menu right">
+        <a class="item" href="/signup">
+          Sign Up
+        </a>
+        <a class="item" href="/login">
+          Log In
+        </a>
+        <a class="item" href="/logout">
+          Logout
+        </a>
+        {{#if showFox}}
+        <p>🦊</p>
+        {{/if}}
       </div>
     </div>
+  </nav>
 
-    <div class="menu right">
-
-      <a class="item" href="/signup">
-        Sign Up
-      </a>
-
-      <a class="item" href="/login">
-        Sign In
-      </a>
-
-      <a class="item" href="/logout">
-        Logout
-      </a>
-
-      {{#if showFox}}
-      <p>🦊</p>
-      {{/if}}
-    </div>
-  </div>
 
   <main>{{{body}}}</main>
 
+  <footer class="ui vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height center aligned grid">
+        <div class="eight wide column">
+          <h4 class="ui header">About</h4>
+          <div class="ui inverted link list">
+            <div>
+              <a href="/about">about us</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="eight wide column">
+          <h4 class="ui header">Link</h4>
+          <div class="ui inverted link list">
+            <div>
+              <a href="https://www.ironhack.com/en" target="_blank">Ironhack</a>
+            </div>
+            <div>
+              <a href="https://github.com/SantAndresP/irongrounds-portal" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="/javascripts/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+
 </body>
 
 </html>
