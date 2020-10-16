@@ -58,8 +58,11 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+
+
 // Default page title.
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "IronGenerator";
 
 // Importing `connect-mongo` and `express-session`.
 const session = require("express-session");
