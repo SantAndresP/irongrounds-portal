@@ -14,6 +14,7 @@ const GameModel = require("../models/gameModel.js");
 const { findById } = require("../models/userModel.js");
 const { route } = require("./authRoutes.js");
 const { search } = require("../app.js");
+const { config } = require("dotenv");
 
 /*
  * Profile routes.
@@ -165,14 +166,22 @@ router.get("/search", (req, res) => {
   const userInput = req.query.search;
   console.log(userInput);
   
-  GameModel.find({ $text: { $search: /userInput/i } })
-    .then(games => {
-      console.log("In find", games);
-      res.render("search-result", { games });
+  // GameModel.find({$text:{$search: userInput}})
+
+  //   .then(games => {
+  //     console.log("In find", games);
+  //     res.render("search-result", { games });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  GameModel.find().then((games)=>{
+    let filtered = games.filter(game =>{
+      console.log(game.title.includes(userInput));
+      return game.title.includes(userInput)
     })
-    .catch((err) => {
-      console.log(err);
-    });
+  //   console.log(filtered);
+  })
 });
 
 // Exports routes.
