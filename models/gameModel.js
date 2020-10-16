@@ -12,13 +12,13 @@ const gameSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      text: true 
+      text: true,
     },
 
     author: {
       type: String,
       required: true,
-      text: true 
+      text: true,
     },
 
     authorId: {
@@ -35,7 +35,6 @@ const gameSchema = new mongoose.Schema(
     width: {
       type: String,
       required: true,
-
     },
 
     height: {
@@ -43,18 +42,11 @@ const gameSchema = new mongoose.Schema(
       required: true,
     },
 
-    likes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-
     about: String,
 
     image: {
       type: String,
-      default: "https://semantic-ui.com/images/wireframe/square-image.png"
+      default: "https://semantic-ui.com/images/wireframe/square-image.png",
     },
 
     // date: String,

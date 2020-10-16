@@ -28,21 +28,33 @@
         </div>
       </div>
       <div class="menu right">
+
         <a class="item" href="/games">
           Catalog
         </a>
-        <a class="item" href="/signup">
-          Sign Up
-        </a>
-        <a class="item" href="/login">
-          Log In
-        </a>
+
+        <!-- Auth buttons. -->
+        {{#if isLoggedIn}}
         <a class="item" href="/logout">
           Logout
         </a>
+
+
         <a class="item" href="/profile">
           Profile
         </a>
+
+        {{else}}
+        <a class="item" href="/signup">
+          Sign Up
+        </a>
+
+        <a class="item" href="/login">
+          Log In
+        </a>
+        {{/if}}
+
+
       </div>
     </div>
   </nav>

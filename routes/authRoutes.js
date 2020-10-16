@@ -34,6 +34,9 @@ router.post("/signup", (req, res) => {
         UserModel.create({ username, password: hashedPass });
       })
       .then(() => {
+        // Checking for user log-in.
+        res.locals.isLoggedIn = !!req.session.loggedUser;
+
         res.redirect("/");
       });
   });
@@ -53,9 +56,10 @@ router.post("/login", (req, res) => {
           res.locals.loggedIn =  req.session.loggedUser
           const userId = req.session.loggedUser._id;
 
-          console.log(req.session.loggedUser);
+          // Checking for user log-in.
+          res.locals.isLoggedIn = !!req.session.loggedUser;
 
-          res.redirect(`/profile/${userId}`);
+          res.redirect("/profile");
         } else {
           res
             .status(500)
