@@ -50,7 +50,7 @@ router.post("/login", (req, res) => {
         if (result) {
           // I'm not sure what this is doing.
           req.session.loggedUser = data;
-
+          res.locals.loggedIn =  req.session.loggedUser
           const userId = req.session.loggedUser._id;
 
           console.log(req.session.loggedUser);
