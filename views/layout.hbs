@@ -21,11 +21,16 @@
       </a>
       <div class="item right">
         <div class="ui icon input">
-          <input type="text" placeholder="Search...">
-          <i class="search link icon"></i>
+          <form action="/search" method="GET">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="submit"><i class="search link icon"></i></button>
+          </form>
         </div>
       </div>
       <div class="menu right">
+        <a class="item" href="/games">
+          Catalog
+        </a>
         <a class="item" href="/signup">
           Sign Up
         </a>

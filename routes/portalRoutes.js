@@ -13,6 +13,7 @@ const GameModel = require("../models/gameModel.js");
 
 const { findById } = require("../models/userModel.js");
 const { route } = require("./authRoutes.js");
+const { search } = require("../app.js");
 
 /*
  * Profile routes.
@@ -72,6 +73,13 @@ router.post("/profile/edit", (req, res, next) => {
 /*
  * Game routes.
  */
+
+// Game catalog.
+router.get("/games", (req, res) => {
+  GameModel.find().then((games) => {
+    res.render("game-catalog", { games });
+  });
+});
 
 // Uploading a game.
 router.get("/profile/upload", (req, res) => {
@@ -150,6 +158,21 @@ router.post("/games/:id/delete", (req, res, next) => {
       res.render("permission-denied");
     }
   });
+});
+
+// Search game
+router.get("/search", (req, res) => {
+  const userInput = req.query.search;
+  console.log(userInput);
+  
+  GameModel.find({ $text: { $search: /userInput/i } })
+    .then(games => {
+      console.log("In find", games);
+      res.render("search-result", { games });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // Exports routes.
