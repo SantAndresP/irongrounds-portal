@@ -12,11 +12,13 @@ const gameSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      text: true 
     },
 
     author: {
       type: String,
       required: true,
+      text: true 
     },
 
     authorId: {
@@ -33,6 +35,7 @@ const gameSchema = new mongoose.Schema(
     width: {
       type: String,
       required: true,
+
     },
 
     height: {

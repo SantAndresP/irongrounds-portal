@@ -1,0 +1,40 @@
+<section class="game-catalog">
+
+    <div class="index__weekOfGames">
+        <h2>Week of Games</h2>
+        <div class="ui link cards index__weekOfGamesList">
+        {{#each games}}
+            <div class="card">
+                <div class="image">
+                    <img
+                        src="{{this.image}}">
+                </div>
+                <div class="content">
+                    <div class="header">
+                        <a href="/games/{{this._id}}">{{this.title}}</a>
+                        </div>
+                    <div class="meta">
+                        <a href="/user/{{this.authorId}}">{{this.author}}</a>
+                    </div>
+                    <div class="description">
+                        {{this.abut}}
+                    </div>
+                    <div class="ui center aligned">
+                        <a href="/games/{{this._id}}" class="ui button orange">Play</a>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <span class="right floated">
+                        {{dateFormat this.createdAt "MMMM Do YYYY"}}
+                    </span>
+                    <span>
+                        <i class="comment icon"></i>
+                        75 Likes
+                    </span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+</section>
+
+</section>
