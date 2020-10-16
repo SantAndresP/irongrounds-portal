@@ -4,24 +4,21 @@
 const express = require("express");
 const router = express.Router();
 
+const UserModel = require("../models/userModel.js");
+const GameModel = require("../models/gameModel.js");
+
 /*
  * Routes
  */
+
 // Home page.
 router.get("/", (req, res, next) => {
-// let username = req.session.loggedUser.username
-// console.log("outside",username);
+  GameModel.find().then((gamesList) => {
+    // Checking for user log-in.
+    res.locals.isLoggedIn = !!req.session.loggedUser;
 
-//   if (username) {
-//     console.log("in if",username);
-//     res.render("index", { usernamee });
-//   } else {
-//     console.log("in else",username);
-//     res.render("index", { username: "Hello" });
-//   }
-
-  res.render("index");
-  // res.render("games/game");
+    res.render("index", { gamesList });
+  });
 });
 
 module.exports = router;

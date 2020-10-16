@@ -1,4 +1,111 @@
+<!-- Main page. -->
 <section class="index__gameList">
+
+  <div class="index__ranking">
+    <h2>Ranking</h2>
+    {{#each gamesList}}
+    <div class="ui very relaxed list">
+      <div class="item">
+        <img class="ui avatar image index__rankingImage" src="{{this.image}}">
+        <div class="content">
+          <a class="header" href="/games/{{this._id}}">{{this.title}}</a>
+          <div class="description">{{this.about}}</div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="index__weekOfGames">
+    <h2>Week of Games</h2>
+    <div class="ui link cards index__weekOfGamesList">
+
+      {{#each gamesList}}
+      <!-- Game card container. -->
+      <div class="card">
+
+        <!-- Thumbnail. -->
+        <div class="image">
+          <img src="{{this.image}}">
+        </div>
+
+        <!-- Main content. -->
+        <div class="content">
+          <div class="header">{{this.title}}</div>
+          <div class="meta">
+            <a href="/profile/public/{{this.authorId}}">{{this.author}}</a>
+          </div>
+
+          <div class="description">
+            {{this.about}}
+          </div>
+          <div class="ui center aligned">
+            <a href="/games/{{this._id}}" class="ui button orange">Play</a>
+          </div>
+        </div>
+
+        <!-- Extras. -->
+        <div class="extra content">
+          <span class="right floated">
+            Created in Oct 14th 2020
+          </span>
+          <span>
+            <i class="comment icon"></i>
+            75 Reviews
+          </span>
+        </div>
+
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+</section>
+
+<section class="index__gameList">
+  <div class="index__featuredGames">
+    <h2>Featured Games</h2>
+
+    <!-- Featured games list. -->
+    <div class="ui link cards index__featuredGamesList">
+      {{#each gamesList}}
+
+      <div class="card">
+        <div class="image">
+          <img src="{{this.image}}">
+        </div>
+
+        <!-- Game content. -->
+        <div class="content">
+          <div class="header">{{this.title}}</div>
+          <div class="meta">
+            <a href="/profile/public/{{this.authorId}}">{{this.author}}</a>
+          </div>
+          <div class="description">{{this.description}}</div>
+          <div class="ui center aligned">
+            <a href="/games/{{this_id}}" class="ui button orange">Play</a>
+          </div>
+        </div>
+
+        <!-- Extra content. -->
+        <div class="extra content">
+          <span class="right floated">
+            Created in Oct 14th 2020
+          </span>
+          <span>
+            <i class="comment icon"></i>
+            75 Reviews
+          </span>
+        </div>
+
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+</section>
+
+{{!-- <section class="index__gameList">
 
   <div class="index__ranking">
     <h2>Ranking</h2>
@@ -232,4 +339,4 @@
     </div>
 
   </div>
-</section>
+</section> --}}

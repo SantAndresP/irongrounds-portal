@@ -21,6 +21,9 @@ const { search } = require("../app.js");
 
 // Shows profile page.
 router.get("/profile", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const { loggedUser } = req.session;
 
   if (loggedUser) {
@@ -32,6 +35,10 @@ router.get("/profile", (req, res) => {
           game,
         };
 
+        // Checking for user log-in.
+        res.locals.isLoggedIn = !!req.session.loggedUser;
+
+        console.log("locals", res.locals);
         res.render("profile", { info });
       });
   } else {
@@ -39,21 +46,11 @@ router.get("/profile", (req, res) => {
   }
 });
 
-// router.get("/profile/:id", (req, res) => {
-//   const id = req.params.id;
-
-//   UserModel.findById(id)
-//     .then((user) => {
-//       res.render("profile", { user });
-//     })
-//     .catch((err) => {
-//       console.log("Something has gone horribly wrong.", err);
-//       res.redirect("/login");
-//     });
-// });
-
 // Editing profile.
 router.get("/profile/edit", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   if (req.session.loggedUser) {
     res.render("profile/edit");
   } else {
@@ -62,6 +59,9 @@ router.get("/profile/edit", (req, res) => {
 });
 
 router.post("/profile/edit", (req, res, next) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.session.loggedUser._id;
 
   UserModel.findByIdAndUpdate(id, { $set: req.body }).then(() => {
@@ -76,13 +76,19 @@ router.post("/profile/edit", (req, res, next) => {
 
 // Game catalog.
 router.get("/games", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   GameModel.find().then((games) => {
     res.render("game-catalog", { games });
   });
 });
 
-// Uploading a game.
+// Uploading a game GET.
 router.get("/profile/upload", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   if (req.session.loggedUser) {
     res.render("profile/upload-game");
   } else {
@@ -90,7 +96,11 @@ router.get("/profile/upload", (req, res) => {
   }
 });
 
+// Uploading a game POST.
 router.post("/profile/upload", (req, res, next) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const { username, _id } = req.session.loggedUser;
 
   const newGame = {
@@ -108,6 +118,9 @@ router.post("/profile/upload", (req, res, next) => {
 
 // Games.
 router.get("/games/:gameid", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.params.gameid;
 
   GameModel.findById(id).then((data) => {
@@ -117,6 +130,9 @@ router.get("/games/:gameid", (req, res) => {
 
 // Editing game GET.
 router.get("/games/:id/edit", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.params.id;
   const { _id } = req.session.loggedUser;
 
@@ -131,6 +147,9 @@ router.get("/games/:id/edit", (req, res) => {
 
 // Editing game POST.
 router.post("/games/:id/edit", (req, res, next) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.params.id;
 
   GameModel.findByIdAndUpdate(id, { $set: req.body })
@@ -146,6 +165,9 @@ router.post("/games/:id/edit", (req, res, next) => {
 
 // Deleting game.
 router.post("/games/:id/delete", (req, res, next) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.params.id;
   const { _id } = req.session.loggedUser;
 
@@ -160,10 +182,12 @@ router.post("/games/:id/delete", (req, res, next) => {
   });
 });
 
-// Search game
+// Search game.
 router.get("/search", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const userSearch = req.query.search.toLowerCase();
-  console.log("This is user search!", userSearch);
 
   GameModel.find()
     .then((gamesList) => {
