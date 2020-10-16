@@ -162,16 +162,21 @@ router.post("/games/:id/delete", (req, res, next) => {
 
 // Search game
 router.get("/search", (req, res) => {
-  const userInput = req.query.search;
-  console.log(userInput);
-  
-  GameModel.find({ $text: { $search: /userInput/i } })
-    .then(games => {
-      console.log("In find", games);
-      res.render("search-result", { games });
+  const userSearch = req.query.search.toLowerCase();
+  console.log("This is user search!", userSearch);
+
+  GameModel.find()
+    .then((gamesList) => {
+      console.log(gamesList);
+
+      const searchedGames = gamesList.filter((game) => {
+        return game.title.toLowerCase().includes(userSearch);
+      });
+
+      return searchedGames;
     })
-    .catch((err) => {
-      console.log(err);
+    .then((games) => {
+      res.render("search-result", { games });
     });
 });
 
