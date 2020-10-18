@@ -185,7 +185,6 @@ router.post("/games/:id/delete", (req, res, next) => {
 
 // Search game.
 router.get("/search", (req, res) => {
-<<<<<<< HEAD
   const userInput = req.query.search;
   console.log(userInput);
   
@@ -205,26 +204,6 @@ router.get("/search", (req, res) => {
     })
   //   console.log(filtered);
   })
-=======
-  // Checking for user log-in.
-  res.locals.isLoggedIn = !!req.session.loggedUser;
-
-  const userSearch = req.query.search.toLowerCase();
-
-  GameModel.find()
-    .then((gamesList) => {
-      console.log(gamesList);
-
-      const searchedGames = gamesList.filter((game) => {
-        return game.title.toLowerCase().includes(userSearch);
-      });
-
-      return searchedGames;
-    })
-    .then((games) => {
-      res.render("search-result", { games });
-    });
->>>>>>> 14fb393ad6375bd04a9a5e1ab4965641e35d801d
 });
 
 // Exports routes.

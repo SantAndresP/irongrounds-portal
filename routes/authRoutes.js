@@ -31,13 +31,17 @@ router.post("/signup", (req, res) => {
     bcrypt
       .hash(password, salt)
       .then((hashedPass) => {
-        UserModel.create({ username, password: hashedPass });
+        UserModel.create({ username, password: hashedPass }).then((user) => {
+          req.session.loggedUser = user;
+          // Checking for user log-in.
+          res.locals.isLoggedIn = !!req.session.loggedUser;
+          res.redirect("/");
+        });
       })
-      .then(() => {
-        // Checking for user log-in.
-        res.locals.isLoggedIn = !!req.session.loggedUser;
-
-        res.redirect("/");
+      .catch(() => {
+        res
+          .status(500)
+          .render("auth/login", { error: "Passwords do not match." });
       });
   });
 });
@@ -53,7 +57,7 @@ router.post("/login", (req, res) => {
         if (result) {
           // I'm not sure what this is doing.
           req.session.loggedUser = data;
-          res.locals.loggedIn =  req.session.loggedUser
+          res.locals.loggedIn = req.session.loggedUser;
           const userId = req.session.loggedUser._id;
 
           // Checking for user log-in.
