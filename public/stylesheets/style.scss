@@ -22,10 +22,19 @@ h3 {
   font-style: normal;
 }
 
-#main_logo{
+#main_logo {
   object-fit: contain;
   height: 120px;
   margin-left: 30px;
+}
+
+#layout__searchBtn {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
 //=====index styling=====//
@@ -44,10 +53,11 @@ h3 {
 }
 
 .index__ranking {
-  margin-top: 20px;
+  margin: 20px 30px;
   padding: 30px;
-  margin-right: 20px;
-  max-width: 500px;
+  padding-left: 80px;
+  width: 500px;
+  max-width: 600px;
 }
 
 
@@ -105,7 +115,7 @@ h3 {
   margin-top: 50px;
 }
 
-.game-container{
+.game-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -115,7 +125,7 @@ iframe {
   margin: 20px;
 }
 
-.game__button{
+.game__button {
   display: flex;
   justify-content: center;
 }
@@ -185,6 +195,6 @@ iframe {
   width: 100%;
 }
 
-#thumbnail{
+#thumbnail {
   height: 200px;
 }

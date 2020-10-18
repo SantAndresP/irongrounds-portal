@@ -3,8 +3,8 @@
 
   <div class="index__ranking">
     <h2>Ranking</h2>
-    {{#each gamesList}}
     <div class="ui very relaxed list">
+      {{#each gamesList}}
       <div class="item">
         <img class="ui avatar image index__rankingImage" src="{{this.image}}">
         <div class="content">
@@ -12,8 +12,8 @@
           <div class="description">{{this.about}}</div>
         </div>
       </div>
+      {{/each}}
     </div>
-    {{/each}}
   </div>
 
   <div class="index__weekOfGames">
@@ -25,13 +25,16 @@
       <div class="card">
 
         <!-- Thumbnail. -->
-        <div class="image">
+
+        <a class="image" href="/games/{{this._id}}">
           <img src="{{this.image}}" id="thumbnail">
-        </div>
+        </a>
 
         <!-- Main content. -->
         <div class="content">
-          <div class="header">{{this.title}}</div>
+          <div class="header">
+            <h3>{{this.title}}</h3>
+          </div>
           <div class="meta">
             <a href="/profile/public/{{this.authorId}}">{{this.author}}</a>
           </div>
@@ -56,6 +59,7 @@
         </div>
 
       </div>
+
       {{/each}}
     </div>
   </div>
@@ -69,24 +73,30 @@
     <!-- Featured games list. -->
     <div class="ui link cards index__featuredGamesList">
       {{#each gamesList}}
-
       <div class="card">
-        <div class="image">
+        <a class="image" href="/games/{{this._id}}">
           <img src="{{this.image}}" id="thumbnail">
-        </div>
+        </a>
+
 
         <!-- Game content. -->
-        <div class="content">
-          <div class="header">{{this.title}}</div>
-          <div class="meta">
-            <a href="/profile/public/{{this.authorId}}">{{this.author}}</a>
-          </div>
-          <div class="description">{{this.description}}</div>
-          <div class="ui center aligned">
-            <a href="/games/{{this_id}}" class="ui button orange">Play</a>
-          </div>
-        </div>
+        <a href="/games/{{this_id}}">
 
+          <div href="/games/{{this_id}}" class="content">
+            <div class="header">
+              <h3>
+                {{this.title}}
+              </h3>
+            </div>
+            <div class="meta">
+              <a href="/profile/public/{{this.authorId}}">{{this.author}}</a>
+            </div>
+            <div class="description">{{this.description}}</div>
+            <div class="ui center aligned">
+              <a href="/games/{{this_id}}" class="ui button orange">Play</a>
+            </div>
+          </div>
+        </a>
         <!-- Extra content. -->
         <div class="extra content">
           <span class="right floated">
@@ -99,6 +109,7 @@
         </div>
 
       </div>
+
       {{/each}}
     </div>
 
