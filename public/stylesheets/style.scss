@@ -6,7 +6,7 @@
 
 
 body {
-  padding: 50px;
+  padding: 10px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -20,6 +20,12 @@ h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal;
+}
+
+#main_logo{
+  object-fit: contain;
+  height: 120px;
+  margin-left: 30px;
 }
 
 //=====index styling=====//
