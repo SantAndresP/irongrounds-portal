@@ -4,13 +4,15 @@
     <div class="game-container">
         <!-- Game title. -->
         <div class="game-title">
-            <h3>{{data.title}}</h3>
+            <h2>{{data.title}}</h2>
         </div>
 
         <!-- Game iframe. -->
-        <div class="game__image">
+        <div class="game__screen">
             <iframe width="{{data.width}}" height="{{data.height}}" style="border:none;" src="{{data.link}}"></iframe>
-            
+        </div>
+        <div class="game__button">
+            <button class="ui orange right floated button game__fullscreen">Play Full Screen</button>
         </div>
     </div>
 

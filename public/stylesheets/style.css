@@ -78,9 +78,17 @@ h3 {
   justify-content: space-between;
   margin-top: 50px; }
 
-#game__screenshot {
-  object-fit: contain;
-  width: 800px; }
+.game-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+iframe {
+  margin: 20px; }
+
+.game__button {
+  display: flex;
+  justify-content: center; }
 
 .game__play {
   margin: 20px; }
@@ -130,5 +138,8 @@ h3 {
 .form__button {
   margin-top: 10px;
   width: 100%; }
+
+#thumbnail {
+  height: 200px; }
 
 /*# sourceMappingURL=style.css.map */
