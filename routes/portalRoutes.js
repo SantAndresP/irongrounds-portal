@@ -53,7 +53,9 @@ router.get("/profile/edit", (req, res) => {
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
   if (req.session.loggedUser) {
-    res.render("profile/edit");
+    let user = req.session.loggedUser;
+    console.log(user);
+    res.render("profile/edit", { user });
   } else {
     res.redirect("/login");
   }
@@ -187,7 +189,7 @@ router.post("/games/:id/delete", (req, res, next) => {
 router.get("/search", (req, res) => {
   const userInput = req.query.search;
   console.log(userInput);
-  
+
   // GameModel.find({$text:{$search: userInput}})
 
   //   .then(games => {
@@ -197,13 +199,13 @@ router.get("/search", (req, res) => {
   //   .catch((err) => {
   //     console.log(err);
   //   });
-  GameModel.find().then((games)=>{
-    let filtered = games.filter(game =>{
+  GameModel.find().then((games) => {
+    let filtered = games.filter((game) => {
       console.log(game.title.includes(userInput));
-      return game.title.includes(userInput)
-    })
-  //   console.log(filtered);
-  })
+      return game.title.includes(userInput);
+    });
+    //   console.log(filtered);
+  });
 });
 
 // Exports routes.
