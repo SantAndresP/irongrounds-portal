@@ -66,4 +66,63 @@
             <p>Comments go here.</p>
         </div>
     </div>
+
+    <!-- Delete button. -->
+    <form method="POST" action="/games/{{data._id}}/like">
+        <button type="submit">Like</button>
+    </form>
+    <p>{{data.likes.length}}</p>
+
+
+    <!-- Comments Section | Comments Section | Comments Section -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="page-header">Comments</h2>
+
+
+                <section class="comment-list">
+                    {{#each opinions.comments}}
+                    <article class="row">
+                        <div class="col-md-2 col-sm-2 hidden-xs">
+                            <figure class="thumbnail">
+                                <img class="img-responsive" src="{{this.image}}" />
+                                <figcaption class="text-center">{{this.author}}</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-10 col-sm-10">
+                            <div class="panel panel-default arrow left">
+                                <div class="panel-body">
+                                    <header class="text-left">
+                                        <time class="comment-date" datetime="16-12-2014 01:05"><i
+                                                class="fa fa-clock-o"></i> Dec 16,
+                                            2014</time>
+                                    </header>
+                                    <div class="comment-post">
+                                        <p>
+                                            {{this.comment}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </article>
+                    {{/each}}
+                </section>
+
+                <!-- Post button. -->
+                <div class="form__button">
+                    <form method="POST" action="/games/{{data._id}}/comments"
+                        onsubmit="return confirm('Please, confirm to add comment.');" id="game-comment">
+                        <textarea rows="4" cols="50" name="comment" form="game-comment"></textarea>
+                        <button type="submit" class="ui fluid large red submit button">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

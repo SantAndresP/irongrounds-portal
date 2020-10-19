@@ -1,0 +1,44 @@
+<section id="profile-body">
+  <!-- User profile. -->
+  <div id="user-profile">
+    <div class="profile__info">
+      <img class="ui medium rounded image" src="{{info.user.image}}" class="profile__image">
+      <div class="profile__text">
+        <h2>{{info.user.username}}</h2>
+        <p>{{info.user.ranking}}</p>
+        <p>{{info.user.about}}</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- List of games by the user. -->
+
+<section>
+  {{#if info.game}}
+  <h2>Games by this user</h2>
+
+  <div class="ui link cards profile__games">
+    <!-- Games information. -->
+    {{#each info.game}}
+      <div class="card">
+        <a class="image" href="/games/{{this._id}}">
+          <img src="{{this.image}}" id="thumbnail">
+        </a>
+        <div class="content">
+          <a class="header" href="/games/{{this._id}}">
+            <h3 class="profile__gameTitle">{{this.title}}</h3>
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  {{else}}
+    <div class="profile__info profile__games">
+      <h2>This user has no games ;-(</h2>
+    </div>
+  {{/if}}
+
+</section>

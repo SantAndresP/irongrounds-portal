@@ -38,6 +38,9 @@ const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
 );
 
+// Handlebars partials.
+hbs.registerPartials(path.join(__dirname, "/views/partials"));
+
 // Middleware Set-up.
 app.use(logger("dev"));
 app.use(bodyParser.json());

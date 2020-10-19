@@ -7,13 +7,14 @@ const router = express.Router();
 // Bcryptjs library.
 const bcrypt = require("bcryptjs");
 
-// User model.
+// Models.
 const UserModel = require("../models/userModel.js");
 const GameModel = require("../models/gameModel.js");
+const CommentModel = require("../models/commentModel.js");
 
 const { findById } = require("../models/userModel.js");
 const { route } = require("./authRoutes.js");
-const { search } = require("../app.js");
+const { search, render } = require("../app.js");
 const { config } = require("dotenv");
 
 /*
@@ -36,10 +37,6 @@ router.get("/profile", (req, res) => {
           game,
         };
 
-        // Checking for user log-in.
-        res.locals.isLoggedIn = !!req.session.loggedUser;
-
-        console.log("locals", res.locals);
         res.render("profile", { info });
       });
   } else {
@@ -54,7 +51,6 @@ router.get("/profile/edit", (req, res) => {
 
   if (req.session.loggedUser) {
     let user = req.session.loggedUser;
-    console.log(user);
     res.render("profile/edit", { user });
   } else {
     res.redirect("/login");
@@ -68,7 +64,6 @@ router.post("/profile/edit", (req, res, next) => {
   const id = req.session.loggedUser._id;
 
   UserModel.findByIdAndUpdate(id, { $set: req.body }).then(() => {
-    console.log("Data was updated successfully.");
     res.redirect("/profile");
   });
 });
@@ -113,8 +108,6 @@ router.post("/profile/upload", (req, res, next) => {
   };
 
   GameModel.create(newGame).then(() => {
-    console.log(req.body);
-    console.log("Data was updated successfully.");
     res.redirect("/profile");
   });
 });
@@ -127,7 +120,13 @@ router.get("/games/:gameid", (req, res) => {
   const id = req.params.gameid;
 
   GameModel.findById(id).then((data) => {
-    res.render("games/game", { data });
+    CommentModel.findOne({ game: id }).then((opinions) => {
+      if (!opinions || opinions.length === 0) {
+        res.render("games/game", { data });
+      } else {
+        res.render("games/game", { data, opinions });
+      }
+    });
   });
 });
 
@@ -157,7 +156,6 @@ router.post("/games/:id/edit", (req, res, next) => {
 
   GameModel.findByIdAndUpdate(id, { $set: req.body })
     .then(() => {
-      console.log("Data was updated successfully.");
       res.redirect("/profile");
     })
     .catch((err) => {
@@ -194,8 +192,6 @@ router.get("/search", (req, res) => {
 
   GameModel.find()
     .then((gamesList) => {
-      console.log(gamesList);
-
       const searchedGames = gamesList.filter((game) => {
         return game.title.toLowerCase().includes(userSearch);
       });
@@ -205,6 +201,104 @@ router.get("/search", (req, res) => {
     .then((games) => {
       res.render("search-result", { games });
     });
+});
+
+// Like.
+router.post("/games/:id/like", (req, res, next) => {
+  const id = req.params.id;
+  const { loggedUser } = req.session;
+
+  if (req.session.loggedUser) {
+    GameModel.find({
+      $and: [{ likes: { $all: [loggedUser._id] } }, { _id: id }],
+    }).then((findResult) => {
+      if (findResult.length === 0) {
+        GameModel.findByIdAndUpdate(id, { $push: { likes: loggedUser._id } })
+          .then(() => {
+            res.redirect(`/games/${id}`);
+          })
+          .catch((err) => {
+            console.log("Something has gone horribly wrong.", err);
+          });
+      } else {
+        GameModel.findByIdAndUpdate(id, { $pull: { likes: loggedUser._id } })
+          .then(() => {
+            res.redirect(`/games/${id}`);
+          })
+          .catch((err) => {
+            console.log("Something has gone horribly wrong.", err);
+          });
+      }
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+// Comments.
+router.post("/games/:id/comments", (req, res, next) => {
+  const id = req.params.id;
+  const { loggedUser } = req.session;
+
+  if (req.session.loggedUser) {
+    CommentModel.find({ game: id }).then((findResult) => {
+      if (findResult.length === 0) {
+        const newCommentSection = {
+          game: id,
+          comments: {
+            author: loggedUser.username,
+            image: loggedUser.image,
+            comment: req.body.comment,
+          },
+        };
+
+        CommentModel.create(newCommentSection).then(() => {
+          res.redirect(`/games/${id}`);
+        });
+      } else {
+        CommentModel.findOneAndUpdate(
+          { game: id },
+          {
+            $push: {
+              comments: {
+                author: loggedUser.username,
+                comment: req.body.comment,
+              },
+            },
+          }
+        ).then(() => {
+          res.redirect(`/games/${id}`);
+        });
+      }
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+// Public profile.
+router.get("/profile/public/:id", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
+  const id = req.params.id;
+
+  UserModel.findById(id).then((userInfo) => {
+    const { username, image, about } = userInfo;
+
+    GameModel.find({ authorId: id }).then((foundGames) => {
+      if (!foundGames || foundGames.length === 0) {
+        const info = { username, image, about };
+        res.render("profile/public", info);
+      } else {
+        const info = {
+          user: { username, image, about },
+          game: foundGames,
+        };
+        res.render("profile/public", { info });
+      }
+    });
+  });
 });
 
 // Exports routes.
