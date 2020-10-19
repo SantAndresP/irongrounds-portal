@@ -41,16 +41,15 @@
     <div class="index__weekOfGames">
         <h2>Week of Games</h2>
         <div class="ui link cards index__weekOfGamesList">
-        {{#each games}}
+            {{#each games}}
             <div class="card">
-                <div class="image">
-                    <img
-                        src="{{this.image}}">
-                </div>
+                <a class="image" href="/games/{{this._id}}">
+                    <img src="{{this.image}}" id="thumbnail">
+                </a>
                 <div class="content">
                     <div class="header">
                         <a href="/games/{{this._id}}">{{this.title}}</a>
-                        </div>
+                    </div>
                     <div class="meta">
                         <a href="/user/{{this.authorId}}">{{this.author}}</a>
                     </div>

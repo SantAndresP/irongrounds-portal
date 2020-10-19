@@ -14,6 +14,7 @@ const GameModel = require("../models/gameModel.js");
 const { findById } = require("../models/userModel.js");
 const { route } = require("./authRoutes.js");
 const { search } = require("../app.js");
+const { config } = require("dotenv");
 
 /*
  * Profile routes.
@@ -52,7 +53,9 @@ router.get("/profile/edit", (req, res) => {
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
   if (req.session.loggedUser) {
-    res.render("profile/edit");
+    let user = req.session.loggedUser;
+    console.log(user);
+    res.render("profile/edit", { user });
   } else {
     res.redirect("/login");
   }

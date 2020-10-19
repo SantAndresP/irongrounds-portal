@@ -6,7 +6,7 @@
 
 
 body {
-  padding: 50px;
+  padding: 10px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -20,6 +20,21 @@ h3 {
   font-family: gopher, sans-serif;
   font-weight: 800;
   font-style: normal;
+}
+
+#main_logo {
+  object-fit: contain;
+  height: 120px;
+  margin-left: 30px;
+}
+
+#layout__searchBtn {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
 //=====index styling=====//
@@ -38,10 +53,14 @@ h3 {
 }
 
 .index__ranking {
-  margin-top: 20px;
+  margin: 20px 30px;
   padding: 30px;
-  margin-right: 20px;
-  max-width: 500px;
+  margin-left: 50px;
+  width: 500px;
+  max-width: 600px;
+  border: 2px solid grey;
+  box-shadow: 2px 3px 3px grey;
+  border-radius: 10px;
 }
 
 
@@ -51,8 +70,11 @@ h3 {
   flex-direction: column;
   margin-top: 20px;
   padding: 30px;
-
+  border: 2px solid grey;
+  box-shadow: 2px 3px 3px grey;
+  border-radius: 10px;
 }
+
 
 .index__weekOfGamesList,
 .index__featuredGamesList {
@@ -99,9 +121,19 @@ h3 {
   margin-top: 50px;
 }
 
-#game__screenshot {
-  object-fit: contain;
-  width: 800px;
+.game-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+iframe {
+  margin: 20px;
+}
+
+.game__button {
+  display: flex;
+  justify-content: center;
 }
 
 .game__play {
@@ -148,7 +180,13 @@ h3 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  border: 2px solid grey;
+  box-shadow: 2px 3px 3px grey;
+  border-radius: 10px;
+  padding: 50px;
 }
+
+
 
 .games-list__thumbnail {
   width: 300px;
@@ -167,4 +205,8 @@ h3 {
 .form__button {
   margin-top: 10px;
   width: 100%;
+}
+
+#thumbnail {
+  height: 200px;
 }

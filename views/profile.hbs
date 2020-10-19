@@ -26,26 +26,29 @@
 
 <section>
   {{#if info.game}}
-    <div class="ui link cards profile__games">
-      {{#each info.game}}
-      <div class="card">
-        <a class="image" href="/games/{{this._id}}">
-          <img src="{{this.image}}">
+  <h2>Your Games</h2>
+  <div class="ui link cards profile__games">
+    {{#each info.game}}
+    <div class="card">
+      <a class="image" href="/games/{{this._id}}">
+        <img src="{{this.image}}" id="thumbnail">
+      </a>
+      <div class="content">
+        <a class="header" href="/games/{{this._id}}">
+          <h3 class="profile__gameTitle">{{this.title}}</h3>
         </a>
-        <div class="content">
-          <a class="header" href="/games/{{this._id}}">
-            <h3 class="profile__gameTitle">{{this.title}}</h3>
+        <div class="profile__button__game">
+          <a href="/games/{{this._id}}/edit">
+            <button class="ui fluid large orange submit button" type="submit">Edit Game</button>
           </a>
-          <div class="profile__button__game">
-            <a href="/games/{{this._id}}/edit">
-              <button class="ui fluid large orange submit button" type="submit">Edit Game</button>
-            </a>
-          </div>
         </div>
       </div>
-      {{/each}}
     </div>
+    {{/each}}
+  </div>
   {{else}}
+  <div class="profile__info profile__games">
     <h2>Please upload your game!</h2>
+  </div>
   {{/if}}
 </section>
