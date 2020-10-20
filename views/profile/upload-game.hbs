@@ -1,45 +1,70 @@
+<!-- Profile edit form. -->
+<link href="/stylesheets/form.css" rel="stylesheet">
+
 <!-- Game upload form. -->
-<div class="form__container">
-  <div class="form__containerChild">
-    <form class="ui form " method="POST" action="/profile/upload">
-      <h2>Upload a game</h2>
+<div class="container">
 
-      <div class="field">
-        <label for="title">Title</label>
-        <input name="title" type="text" class="form-control" id="title" placeholder="Please enter your game title">
-      </div>
+  <div class="py-5 text-center">
+    <h2>Upload a game</h2>
+  </div>
 
-      <div class="field">
-        <label for="about">About</label>
-        <input name="about" type="text" class="form-control" id="about"
-          placeholder="Please enter your game description">
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 order-md-1">
+      <form class="needs-validation form-btn" method="POST" action="/profile/upload">
 
-      <div class="two fields">
-        <div class="field">
-          <label for="link">Game link</label>
-          <input name="link" type="text" class="form-control" id="link" placeholder="Please enter your game URL">
+        <div class="mb-3">
+          <label for="title">Title</label>
+          <div class="input-group">
+            <input name="title" type="text" class="form-control" id="title" placeholder="Please enter your game title"
+              required>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="image">Thumbnail</label>
-          <input name="image" type="text" class="form-control" id="image"
-            placeholder="Please enter your game thumbnail URL">
-        </div>
-      </div>
-
-      <div class="two fields">
-        <div class="field">
-          <label for="width">Width</label>
-          <input name="width" type="text" class="form-control" id="width" placeholder="100%">
+        <div class="mb-3">
+          <label for="about">About</label>
+          <input name="about" type="text" class="form-control" id="about"
+            placeholder="Please enter your game description" required>
         </div>
 
-        <div class="field">
-          <label for="height">Height</label>
-          <input name="height" type="text" class="form-control" id="height" placeholder="500">
+        <div class="row justify-content-center">
+          <div class="col-md-6 mb-3">
+            <label for="link">Game link</label>
+            <input name="link" type="text" class="form-control" id="link" placeholder="Please enter your game URL"
+              required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="image">Thumbnail</label>
+            <input name="image" type="text" class="form-control" id="image"
+              placeholder="Please enter your game thumbnail URL" required>
+          </div>
         </div>
-      </div>
-      <button type="submit" class="ui fluid large teal  button">Submit</button>
-    </form>
+
+        <div class="row justify-content-center">
+          <div class="col-md-6 mb-3">
+            <label for="width">Width</label>
+            <input name="width" type="text" class="form-control" id="width" placeholder="100%" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="height">Height</label>
+            <input name="height" type="text" class="form-control" id="height" placeholder="500" required>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
+          Submit
+        </button>
+      </form>
+
+      {{#if message}}
+        <div class="alert alert-danger mt-3" role="alert">
+          <h4 class="alert-heading">Error</h4>
+          <p>{{message}}</p>
+        </div>
+      {{/if}}
+    </div>
+
   </div>
 </div>

@@ -128,4 +128,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1fQ0tC4vUQOW51UFGZZ09WzBaA8g9M1w5f-pAgGDxgcU/edit?usp=sharing)
