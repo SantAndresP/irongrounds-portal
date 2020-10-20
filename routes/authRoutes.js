@@ -15,16 +15,25 @@ const UserModel = require("../models/userModel.js");
  */
 // Sign-up.
 router.get("/signup", (req, res) => {
-  res.render("auth/signup");
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
+  res.render("auth/signup", { layout: false });
 });
 
 // Log-in.
 router.get("/login", (req, res) => {
-  res.render("auth/login");
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
+  res.render("auth/login", { layout: false });
 });
 
 // Sign-up post.
 router.post("/signup", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const { username, password } = req.body;
 
   bcrypt.genSalt(10).then((salt) => {
@@ -33,21 +42,24 @@ router.post("/signup", (req, res) => {
       .then((hashedPass) => {
         UserModel.create({ username, password: hashedPass }).then((user) => {
           req.session.loggedUser = user;
-          // Checking for user log-in.
-          res.locals.isLoggedIn = !!req.session.loggedUser;
           res.redirect("/");
         });
       })
       .catch(() => {
-        res
-          .status(500)
-          .render("auth/login", { error: "Passwords do not match." });
+        res.status(500).render("auth/login", {
+          errorMessage:
+            "Something went wrong. Try again or speak to the Ironmaster.",
+          layout: false,
+        });
       });
   });
 });
 
 // Log-in post.
 router.post("/login", (req, res) => {
+  // Checking for user log-in.
+  res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const { username, password } = req.body;
 
   UserModel.findOne({ username: username }).then((data) => {
@@ -58,23 +70,24 @@ router.post("/login", (req, res) => {
           // I'm not sure what this is doing.
           req.session.loggedUser = data;
           res.locals.loggedIn = req.session.loggedUser;
-          const userId = req.session.loggedUser._id;
 
           // Checking for user log-in.
           res.locals.isLoggedIn = !!req.session.loggedUser;
 
           res.redirect("/profile");
         } else {
-          res
-            .status(500)
-            .render("auth/login", { error: "Passwords do not match." });
+          res.status(500).render("auth/login", {
+            errorMessage: "Passwords do not match.",
+            layout: false,
+          });
         }
       })
-      .catch((err) => {
-        // console.log(err);
-        res
-          .status(500)
-          .render("auth/login", { error: "Something went wrong. Try again." });
+      .catch(() => {
+        res.status(500).render("auth/login", {
+          errorMessage:
+            "Something went wrong. Try again or speak to the Ironmaster.",
+          layout: false,
+        });
       });
   });
 });
@@ -82,8 +95,6 @@ router.post("/login", (req, res) => {
 // Log-out.
 router.get("/logout", (req, res) => {
   req.session.destroy();
-
-  res.locals.showFox = false;
   res.redirect("/");
 });
 
