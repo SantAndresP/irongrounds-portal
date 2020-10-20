@@ -50,8 +50,11 @@ router.get("/profile/edit", (req, res) => {
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
   if (req.session.loggedUser) {
-    let user = req.session.loggedUser;
-    res.render("profile/edit", { user });
+    let loggedUser = req.session.loggedUser;
+
+    UserModel.findById(loggedUser._id).then((user) => {
+      res.render("profile/edit", { user });
+    });
   } else {
     res.redirect("/login");
   }
@@ -61,9 +64,9 @@ router.post("/profile/edit", (req, res, next) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
-  const id = req.session.loggedUser._id;
+  const loggedUserId = req.session.loggedUser._id;
 
-  UserModel.findByIdAndUpdate(id, { $set: req.body }).then(() => {
+  UserModel.findByIdAndUpdate(loggedUserId, { $set: req.body }).then(() => {
     res.redirect("/profile");
   });
 });
@@ -122,8 +125,10 @@ router.get("/games/:gameid", (req, res) => {
   GameModel.findById(id).then((data) => {
     CommentModel.findOne({ game: id }).then((opinions) => {
       if (!opinions || opinions.length === 0) {
+        console.log(data);
         res.render("games/game", { data });
       } else {
+        console.log(data);
         res.render("games/game", { data, opinions });
       }
     });
@@ -174,7 +179,7 @@ router.post("/games/:id/delete", (req, res, next) => {
 
   GameModel.findById(id).then((game) => {
     if (game.authorId == _id) {
-      GameModel.findOneAndDelete(id).then(() => {
+      GameModel.findOneAndRemove(id).then(() => {
         res.redirect("/profile");
       });
     } else {
@@ -262,6 +267,7 @@ router.post("/games/:id/comments", (req, res, next) => {
             $push: {
               comments: {
                 author: loggedUser.username,
+                image: loggedUser.image,
                 comment: req.body.comment,
               },
             },

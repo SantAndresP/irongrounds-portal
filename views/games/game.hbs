@@ -1,128 +1,80 @@
-<!-- Individual game page. -->
-<div class="ui container">
+<!-- Custom CSS for `game.hbs`. -->
+<link href="/stylesheets/public-game.css" rel="stylesheet">
 
-    <div class="game-container">
-        <!-- Game title. -->
-        <div class="game-title">
-            <h2>{{data.title}}</h2>
-        </div>
+<main>
+    <div class="jumbotron text-white rounded bg-dark">
+        <div>
+            <h1 class="display-4 font-italic">{{data.title}}</h1>
 
-        <!-- Game iframe. -->
-        <div class="game__screen">
-            <iframe width="{{data.width}}" height="{{data.height}}" style="border:none;" src="{{data.link}}"></iframe>
-        </div>
-        <div class="game__button">
-            <button class="ui orange right floated button game__fullscreen">Play Full Screen</button>
-        </div>
-    </div>
+            <!-- iFrame Container. -->
+            <div>
+                <iframe width="{{data.width}}" height="{{data.height}}" style="border:none;"
+                    src="{{data.link}}"></iframe>
+            </div>
 
-
-    <!-- Info body. -->
-    <div class="game__main">
-        <div class="game__left">
-            <div class="ui card">
-
-                <!-- User picture. -->
-                <div class="image">
-                    <img
-                        src="https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg&w=1440">
-                </div>
-
-                <!-- About user. -->
-                <div class="content">
-                    <a class="header" href="/user/:userid">Manish</a>
-                    <div class="meta">
-                        <span class="date">Created on Oct 14th 2020</span>
-                    </div>
-
-                    <div class="description">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, eum dolorum. Id, vel
-                        recusandae laborum mollitia quam beatae neque sed eius dolore a modi quaerat voluptate iste
-                        assumenda! Esse, culpa.
-                    </div>
+            <!-- Buttons container. -->
+            <div class="btn-game-container">
+                <strong class="text-muted">{{data.likes.length}} LIKES</strong>
+                <div class="btn-game-card">
+                    <button class="btn btn-lg btn-outline-danger game__fullscreen">Full Screen</button>
+                    <form method="POST" action="/games/{{data._id}}/like">
+                        <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Game information. -->
-        <div class="game__right">
-            <!-- Game description. -->
-            <div class="game__description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ad laudantium molestiae, non
-                    quidem
-                    minus
-                    quisquam beatae cupiditate fugit nostrum temporibus corrupti voluptatum fuga nemo ducimus,
-                    tempore
-                    dolore
-                    laboriosam provident.</p>
-            </div>
+    <!-- User information. -->
+    <div class="card mb-3 myUserInformation" style="width: 70%">
+        <div class="card-body">
+            <a href="/profile/public/{{data.authorId}}">
+                <h5 class="card-title">{{data.author}}</h5>
+            </a>
+            <p class="card-text">{{data.about}}</p>
+            <p class="card-text"><small class="text-muted">Uploaded on
+                    {{dateFormat data.createdAt "MMMM Do, YYYY."}}
+                </small></p>
         </div>
     </div>
 
-
-    <!-- Comments. -->
-    <div class="game__play">
-        <div class="ui center aligned grid">
-            <p>Comments go here.</p>
-        </div>
+    <!-- Post comment form. -->
+    <div class="myCommentInput">
+        <form method="POST" action="/games/{{data._id}}/comments"
+            onsubmit="return confirm('Please, confirm to add comment.');" id="game-comment">
+            <textarea rows="4" cols="50" name="comment" form="game-comment"></textarea>
+            <button type="submit" class="btn btn-sm btn-success">Post comment</button>
     </div>
 
-    <!-- Delete button. -->
-    <form method="POST" action="/games/{{data._id}}/like">
-        <button type="submit">Like</button>
-    </form>
-    <p>{{data.likes.length}}</p>
+    <!-- Comments Section. -->
+    <div class="row d-flex justify-content-center mt-100 mb-100">
+        <div class="col-lg-6">
+            <div class="card">
 
+                <div class="card-body text-center">
+                    <h4 class="card-title">Comments</h4>
+                </div>
 
-    <!-- Comments Section | Comments Section | Comments Section -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                <!-- Comments list. -->
+                <div class="comment-widgets">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h2 class="page-header">Comments</h2>
-
-
-                <section class="comment-list">
                     {{#each opinions.comments}}
-                    <article class="row">
-                        <div class="col-md-2 col-sm-2 hidden-xs">
-                            <figure class="thumbnail">
-                                <img class="img-responsive" src="{{this.image}}" />
-                                <figcaption class="text-center">{{this.author}}</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-md-10 col-sm-10">
-                            <div class="panel panel-default arrow left">
-                                <div class="panel-body">
-                                    <header class="text-left">
-                                        <time class="comment-date" datetime="16-12-2014 01:05"><i
-                                                class="fa fa-clock-o"></i> Dec 16,
-                                            2014</time>
-                                    </header>
-                                    <div class="comment-post">
-                                        <p>
-                                            {{this.comment}}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="d-flex flex-row comment-row m-t-0">
+
+                        <div class="p-2">
+                            <img src="{{this.image}}" alt="user" width="50" class="rounded-circle">
                         </div>
 
-                    </article>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">{{this.author}}</h6> <span class="m-b-15 d-block">{{this.comment}}
+                            </span>
+                            <span class="text-muted float-right">{{dateFormat this.createdAt "MMMM Do, YYYY"}}
+                            </span>
+                        </div>
+                    </div>
                     {{/each}}
-                </section>
-
-                <!-- Post button. -->
-                <div class="form__button">
-                    <form method="POST" action="/games/{{data._id}}/comments"
-                        onsubmit="return confirm('Please, confirm to add comment.');" id="game-comment">
-                        <textarea rows="4" cols="50" name="comment" form="game-comment"></textarea>
-                        <button type="submit" class="ui fluid large red submit button">Post</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>

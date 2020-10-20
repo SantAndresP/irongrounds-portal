@@ -7,15 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
 
-
-
-  <link rel="icon" href="/images/irongrounds_logo.png" type="image/x-icon" />
-  <link rel="stylesheet" href="https://use.typekit.net/ygp8kyv.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-
   <!-- Bootstrap CSS. -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
     id="bootstrap-css">
@@ -23,104 +14,79 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+  <!-- Custom CSS. -->
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
-  <nav class="container">
-    <div class="ui secondary  menu">
-      <a class="logo" href="/">
-        {{!-- <h1>{{title}}</h1> --}}
-        <img src="/images/irongrounds_logo.png" alt="logo" id="main_logo">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">
+        {{title}}
       </a>
-      <div class="item right">
 
-        {{!-- <div class="ui category search">
-          <div class="ui icon input">
-            <form action="/search" method="GET">
-              <input type="text" placeholder="Search..." name="search" class="prompt">
-              <button type="submit" id="layout__searchBtn"><i class="search link icon"></i></button>
-            </form>
-          </div>
-        </div> --}}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <!-- New search bar. -->
-        <div class="container h-100">
-          <div class="d-flex justify-content-center h-100">
-            <form action="/search" method="GET" class="searchbar"> <input type="text" placeholder="Search..."
-                name="search" class="search_input">
-              <button type="submit" id="layout__searchBtn"><i class="search link icon"></i></button>
-            </form>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
 
+          <li class="nav-item">
+            <a class="nav-link" href="/games">Games</a>
+          </li>
+
+          <!-- Auth buttons. -->
+          {{#if isLoggedIn}}
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log-out</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign-up</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log-in</a>
+          </li>
+          {{/if}}
+        </ul>
+
+        <!-- Search input. -->
+        <form class="form-inline mt-2 mt-md-0" action="/search" method="GET">
+          <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
-      <div class="menu right">
 
-        <a class="item" href="/games">
-          Catalog
-        </a>
+    </nav>
+  </header>
 
-        <!-- Auth buttons. -->
-        {{#if isLoggedIn}}
+  {{{body}}}
 
-        <a class="item" href="/profile">
-          Profile
-        </a>
-
-        <a class="item" href="/logout">
-          Logout
-        </a>
-        {{else}}
-        <a class="item" href="/signup">
-          Sign Up
-        </a>
-
-        <a class="item" href="/login">
-          Log In
-        </a>
-        {{/if}}
-
-
-      </div>
-    </div>
-  </nav>
-
-
-  <main>{{{body}}}</main>
-
-  <footer class="ui vertical footer segment">
-    <div class="ui container">
-      <div class="ui stackable inverted divided equal height center aligned grid">
-        <div class="eight wide column">
-          <h4 class="ui header">About</h4>
-          <div class="ui inverted link list">
-            <div>
-              <a href="/about">about us</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="eight wide column">
-          <h4 class="ui header">Link</h4>
-          <div class="ui inverted link list">
-            <div>
-              <a href="https://www.ironhack.com/en" target="_blank">Ironhack</a>
-            </div>
-            <div>
-              <a href="https://github.com/SantAndresP/irongrounds-portal" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Footer. -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 
-  <script src="/javascripts/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
-
   <!-- Bootstrap Scripts. -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <!-- iFrame Settings. -->
+  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>

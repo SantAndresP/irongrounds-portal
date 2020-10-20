@@ -1,0 +1,19 @@
+main {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#main-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-self: center !important;
+}
+
+#featured-game {
+  margin-bottom: 30px;
+}

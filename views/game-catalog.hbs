@@ -1,177 +1,42 @@
-<section class="game-catalog">
+<!-- Custom styles for `game-catalog.hbs`. -->
+<link href="/stylesheets/games-catalog.css" rel="stylesheet">
 
-    {{!-- <div class="index__ranking">
-        <h2>Ranking</h2>
-        <div class="ui very relaxed list">
-            <div class="item">
-                <img class="ui avatar image index__rankingImage"
-                    src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                <div class="content">
-                    <a class="header" href="/games/:gameid">The Legend of Zelda</a>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+<!-- Main. -->
+<main role="main">
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        {{#each games}}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">
+                <b>{{this.title}}</b>
+                <br>{{this.about}}
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{this.likes.length}} likes</small>
+
+                <div class="btn-game-card">
+                  <a type="button" href="/games/{{this._id}}" class="btn btn-lg btn-outline-danger">Play</a>
+                  <form method="POST" action="/games/{{this._id}}/like">
+                    <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
+                  </form>
                 </div>
+
+              </div>
+
             </div>
-            <div class="item">
-                <img class="ui avatar image"
-                    src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                <div class="content">
-                    <a class="header" href="/games/:gameid">The Legend of Zelda</a>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="ui avatar image"
-                    src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                <div class="content">
-                    <a class="header" href="/games/:gameid">The Legend of Zelda</a>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="ui avatar image"
-                    src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                <div class="content">
-                    <a class="header" href="/games/:gameid">The Legend of Zelda</a>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div> --}}
+        {{/each}}
 
-    <div class="index__weekOfGames">
-        <h2>Week of Games</h2>
-        <div class="ui link cards index__weekOfGamesList">
-            {{#each games}}
-            <div class="card">
-                <a class="image" href="/games/{{this._id}}">
-                    <img src="{{this.image}}" id="thumbnail">
-                </a>
-                <div class="content">
-                    <div class="header">
-                        <a href="/games/{{this._id}}">{{this.title}}</a>
-                    </div>
-                    <div class="meta">
-                        <a href="/user/{{this.authorId}}">{{this.author}}</a>
-                    </div>
-                    <div class="description">
-                        {{this.abut}}
-                    </div>
-                    <div class="ui center aligned">
-                        <a href="/games/{{this._id}}" class="ui button orange">Play</a>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        {{dateFormat this.createdAt "MMMM Do YYYY"}}
-                    </span>
-                    <span>
-                        <i class="comment icon"></i>
-                        75 Likes
-                    </span>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-</section>
-{{!-- 
-<section class="game-catalog">
-    <div class="index__featuredGames">
-        <h2>Featured Games</h2>
-
-        <div class="ui link cards index__featuredGamesList">
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">The Legend of Zelda</div>
-                    <div class="meta">
-                        <a href="/user/:userId">Manish</a>
-                    </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit assumenda in? Lorem ipsum
-                        dolor sit
-                        amet
-                        consectetur adipisicing elit.
-                    </div>
-                    <div class="ui center aligned">
-                        <a href="/games/:gameid" class="ui button orange">Play</a>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        Created in Oct 14th 2020
-                    </span>
-                    <span>
-                        <i class="comment icon"></i>
-                        75 Reviews
-                    </span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">The Legend of Zelda</div>
-                    <div class="meta">
-                        <a href="/user/:userId">Manish</a>
-                    </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit assumenda in? Lorem ipsum
-                        dolor sit
-                        amet
-                        consectetur adipisicing elit.
-                    </div>
-                    <div class="ui center aligned">
-                        <a href="/games/:gameid" class="ui button orange">Play</a>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        Created in Oct 14th 2020
-                    </span>
-                    <span>
-                        <i class="comment icon"></i>
-                        75 Reviews
-                    </span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image">
-                    <img
-                        src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">The Legend of Zelda</div>
-                    <div class="meta">
-                        <a href="/user/:userId">Manish</a>
-                    </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit assumenda in? Lorem ipsum
-                        dolor sit
-                        amet
-                        consectetur adipisicing elit.
-                    </div>
-                    <div class="ui center aligned">
-                        <a href="/games/:gameid" class="ui button orange">Play</a>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        Created in Oct 14th 2020
-                    </span>
-                    <span>
-                        <i class="comment icon"></i>
-                        75 Reviews
-                    </span>
-                </div>
-            </div>
-        </div>
-
-    </div> --}}
-</section>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,39 +1,43 @@
-<section class="game-catalog">
+<!-- Custom styles for `search-result.hbs`. -->
+<link href="/stylesheets/games-catalog.css" rel="stylesheet">
 
-    <div class="index__weekOfGames">
-        <h2>Week of Games</h2>
-        <div class="ui link cards index__weekOfGamesList">
-            {{#each games}}
-            <div class="card">
-                <a class="image" href="/games/{{this._id}}">
-                    <img src="{{this.image}}" id="thumbnail">
-                </a>
-                <div class="content">
-                    <div class="header">
-                        <a href="/games/{{this._id}}">{{this.title}}</a>
+<!-- Main. -->
+<main role="main">
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+
+                {{#each games}}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>{{this.title}}</b>
+                                    <br>{{this.about}}
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">{{this.likes.length}} likes</small>
+
+                                    <div class="btn-game-card">
+                                        <a type="button" href="/games/{{this._id}}"
+                                            class="btn btn-lg btn-outline-danger">Play</a>
+                                        <form method="POST" action="/games/{{this._id}}/like">
+                                            <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="meta">
-                        <a href="/user/{{this.authorId}}">{{this.author}}</a>
-                    </div>
-                    <div class="description">
-                        {{this.abut}}
-                    </div>
-                    <div class="ui center aligned">
-                        <a href="/games/{{this._id}}" class="ui button orange">Play</a>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        {{dateFormat this.createdAt "MMMM Do YYYY"}}
-                    </span>
-                    <span>
-                        <i class="comment icon"></i>
-                        75 Likes
-                    </span>
-                </div>
+                {{/each}}
+
             </div>
-            {{/each}}
         </div>
-</section>
-
-</section>
+    </div>
+</main>
