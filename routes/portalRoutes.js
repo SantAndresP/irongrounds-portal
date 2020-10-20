@@ -193,6 +193,7 @@ router.post("/games/:id/delete", (req, res, next) => {
   GameModel.findById(id).then((game) => {
     if (game.authorId == _id) {
       GameModel.findOneAndRemove(id).then(() => {
+        console.log("deleted", id);
         res.redirect("/profile");
       });
     } else {

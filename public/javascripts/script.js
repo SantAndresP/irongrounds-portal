@@ -7,8 +7,16 @@ document.addEventListener(
     const form = document.querySelector("#form-edit");
 
     formBtn.addEventListener("click", () => {
-      console.log("clicked");
+      console.log("edit clicked");
       form.submit(); 
+    });
+
+    const formBtnDelete = document.querySelector("#form-btn-delete");
+    const formDelete = document.querySelector("#form-delete");
+
+    formBtnDelete.addEventListener("click", () => {
+      console.log("delete clicked");
+      formDelete.submit(); 
     });
   },
   false
