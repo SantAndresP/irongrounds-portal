@@ -66,9 +66,15 @@ router.post("/profile/edit", (req, res, next) => {
 
   const loggedUserId = req.session.loggedUser._id;
 
-  UserModel.findByIdAndUpdate(loggedUserId, { $set: req.body }).then(() => {
-    res.redirect("/profile");
-  });
+  UserModel.findByIdAndUpdate(loggedUserId, { $set: req.body })
+    .then(() => {
+      res.redirect("/profile");
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .render("profile/edit", { message: "Something went wrong." });
+    });
 });
 
 /*
@@ -110,9 +116,15 @@ router.post("/profile/upload", (req, res, next) => {
     ...req.body,
   };
 
-  GameModel.create(newGame).then(() => {
-    res.redirect("/profile");
-  });
+  GameModel.create(newGame)
+    .then(() => {
+      res.redirect("/profile");
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .render("profile/upload-game", { message: "Something went wrong." });
+    });
 });
 
 // Games.
@@ -160,12 +172,13 @@ router.post("/games/:id/edit", (req, res, next) => {
   const id = req.params.id;
 
   GameModel.findByIdAndUpdate(id, { $set: req.body })
-    .then(() => {
+    .then((game) => {
       res.redirect("/profile");
     })
     .catch((err) => {
-      console.log("Something has gone horribly wrong.", err);
-      res.redirect("/error");
+      res
+        .status(500)
+        .render("profile/edit-game", { message: "Something went wrong." });
     });
 });
 
