@@ -10,30 +10,27 @@
       <div class="row">
 
         {{#each games}}
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">
-                <b>{{this.title}}</b>
-                <br>{{this.about}}
-              </p>
+          <a href="/games/{{this._id}}" id="game-catalog-link">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">
+                    <b>{{this.title}}</b>
+                    <br>{{this.about}}
+                  </p>
 
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">{{this.likes.length}} LIKES</small>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-game-card">
+                      <a type="button" href="/games/{{this._id}}" class="btn btn-sm btn-outline-danger">Play</a>
+                    </div>
 
-                <div class="btn-game-card">
-                  <a type="button" href="/games/{{this._id}}" class="btn btn-sm btn-outline-danger">Play</a>
-                  <form method="POST" action="/games/{{this._id}}/like">
-                    <button class="btn btn-sm btn-outline-primary" type="submit">Like</button>
-                  </form>
+                  </div>
+
                 </div>
-
               </div>
-
             </div>
-          </div>
-        </div>
+          </a>
         {{/each}}
 
       </div>

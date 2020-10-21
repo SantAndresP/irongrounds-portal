@@ -17,9 +17,15 @@
                 <strong class="text-muted">{{data.likes.length}} LIKES</strong>
                 <div class="btn-game-card">
                     <button class="btn btn-lg btn-outline-danger game__fullscreen">Full Screen</button>
-                    <form method="POST" action="/games/{{data._id}}/like">
-                        <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
-                    </form>
+                    {{#if isLikedByUser}}
+                        <form method="POST" action="/games/{{data._id}}/like">
+                            <button class="btn btn-lg btn-primary" type="submit">Liked</button>
+                        </form>
+                    {{else}}
+                        <form method="POST" action="/games/{{data._id}}/like">
+                            <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
+                        </form>
+                    {{/if}}
                 </div>
             </div>
         </div>

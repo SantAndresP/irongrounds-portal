@@ -9,6 +9,10 @@ main {
   width: 150%;
 }
 
+.index-right-card{
+  font-size: 14px;
+}
+
 #featured-game {
   margin-bottom: 30px;
 }
