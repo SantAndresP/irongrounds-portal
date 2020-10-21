@@ -130,17 +130,20 @@ router.post("/profile/upload", (req, res, next) => {
 router.get("/games/:gameid", (req, res) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
-
   const id = req.params.gameid;
+  let isLikedByUser = false;
 
   GameModel.findById(id).then((data) => {
+    if (data.likes.includes(req.session.loggedUser._id)) {
+      isLikedByUser = true;
+    }
     CommentModel.findOne({ game: id }).then((opinions) => {
       if (!opinions || opinions.length === 0) {
         console.log(data);
-        res.render("games/game", { data });
+        res.render("games/game", { data, isLikedByUser });
       } else {
         console.log(data);
-        res.render("games/game", { data, opinions });
+        res.render("games/game", { data, opinions, isLikedByUser });
       }
     });
   });

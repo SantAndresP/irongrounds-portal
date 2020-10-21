@@ -17,7 +17,18 @@ router.get("/", (req, res, next) => {
     // Checking for user log-in.
     res.locals.isLoggedIn = !!req.session.loggedUser;
 
-    res.render("index", { gamesList });
+    const sortedByLikes = JSON.parse(JSON.stringify(gamesList));
+
+    sortedByLikes
+      .sort((a, b) => {
+        return b.likes.length - a.likes.length;
+      })
+      .splice(7);
+
+    console.log("SORTED: ", sortedByLikes);
+    // console.log("NOT SORTED: ", gamesList);
+
+    res.render("index", { gamesList, sortedByLikes });
   });
 });
 
