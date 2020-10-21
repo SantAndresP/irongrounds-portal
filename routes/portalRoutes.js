@@ -134,9 +134,13 @@ router.get("/games/:gameid", (req, res) => {
   let isLikedByUser = false;
 
   GameModel.findById(id).then((data) => {
-    if (data.likes.includes(req.session.loggedUser._id)) {
+    if (
+      req.session.loggedUser &&
+      data.likes.includes(req.session.loggedUser._id)
+    ) {
       isLikedByUser = true;
     }
+
     CommentModel.findOne({ game: id }).then((opinions) => {
       if (!opinions || opinions.length === 0) {
         console.log(data);
