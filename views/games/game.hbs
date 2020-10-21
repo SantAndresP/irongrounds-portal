@@ -18,13 +18,13 @@
                 <div class="btn-game-card">
                     <button class="btn btn-lg btn-outline-danger game__fullscreen">Full Screen</button>
                     {{#if isLikedByUser}}
-                        <form method="POST" action="/games/{{data._id}}/like">
-                            <button class="btn btn-lg btn-primary" type="submit">Liked</button>
-                        </form>
+                    <form method="POST" action="/games/{{data._id}}/like">
+                        <button class="btn btn-lg btn-primary" type="submit">Liked</button>
+                    </form>
                     {{else}}
-                        <form method="POST" action="/games/{{data._id}}/like">
-                            <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
-                        </form>
+                    <form method="POST" action="/games/{{data._id}}/like">
+                        <button class="btn btn-lg btn-outline-primary" type="submit">Like</button>
+                    </form>
                     {{/if}}
                 </div>
             </div>
@@ -46,10 +46,34 @@
 
     <!-- Post comment form. -->
     <div class="myCommentInput">
-        <form method="POST" action="/games/{{data._id}}/comments"
-            onsubmit="return confirm('Please, confirm to add comment.');" id="game-comment">
+        <form method="POST" action="/games/{{data._id}}/comments" id="game-comment" class="post-comment">
             <textarea rows="4" cols="50" name="comment" form="game-comment"></textarea>
-            <button type="submit" class="btn btn-sm btn-success">Post comment</button>
+            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal-comment">Post
+                comment</button>
+
+            <!-- Modal Setting -->
+            <div class="modal" id="myModal-comment">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Please confirm.</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Are you sure you want to post this comment?
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="post-btn"
+                                data-dismiss="modal">Confirm</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
     </div>
 
     <!-- Comments Section. -->
