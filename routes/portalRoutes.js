@@ -32,12 +32,11 @@ router.get("/profile", (req, res) => {
     GameModel.find({ authorId: loggedUser._id })
       .populate("authorId")
       .then((game) => {
-        const info = {
-          user: game.length ? game[0].authorId : loggedUser,
-          game,
-        };
-
-        res.render("profile", { info });
+        UserModel.findById({ _id: loggedUser._id }).then((user) => {
+          console.log(user, game);
+          const info = { user, game };
+          res.render("profile", { info });
+        });
       });
   } else {
     res.redirect("/login");
@@ -67,7 +66,7 @@ router.post("/profile/edit", (req, res, next) => {
   const loggedUserId = req.session.loggedUser._id;
 
   UserModel.findByIdAndUpdate(loggedUserId, { $set: req.body })
-    .then(() => {
+    .then((info) => {
       res.redirect("/profile");
     })
     .catch((err) => {

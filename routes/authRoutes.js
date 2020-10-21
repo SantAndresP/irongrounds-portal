@@ -26,6 +26,10 @@ router.get("/login", (req, res) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
+  if (res.locals.isLoggedIn) {
+    res.redirect("/profile");
+  }
+
   res.render("auth/login", { layout: false });
 });
 
@@ -63,17 +67,19 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   UserModel.findOne({ username: username }).then((data) => {
+    if (!data) {
+      res.status(500).render("auth/login", {
+        errorMessage: "Username doesn't exist.",
+        layout: false,
+      });
+    }
+
     bcrypt
       .compare(password, data.password)
       .then((result) => {
         if (result) {
-          // I'm not sure what this is doing.
           req.session.loggedUser = data;
           res.locals.loggedIn = req.session.loggedUser;
-
-          // Checking for user log-in.
-          res.locals.isLoggedIn = !!req.session.loggedUser;
-
           res.redirect("/profile");
         } else {
           res.status(500).render("auth/login", {
