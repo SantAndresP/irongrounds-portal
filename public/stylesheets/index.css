@@ -1,17 +1,8 @@
 main {
-  margin: 0;
-  padding: 0;
+  padding: 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-}
-
-#main-content {
-  display: flex;
-
-  flex-direction: column;
-
-  justify-self: center !important;
 }
 
 #featured-game {
