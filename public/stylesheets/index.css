@@ -1,10 +1,15 @@
 main {
   padding: 30px;
-  display: flex;
+  /* display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: center; */
+}
+
+#container-right{
+  width: 150%;
 }
 
 #featured-game {
   margin-bottom: 30px;
 }
+

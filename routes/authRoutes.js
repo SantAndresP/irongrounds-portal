@@ -56,9 +56,6 @@ router.post("/signup", (req, res) => {
             .render("auth/login", { error: "Passwords do not match." });
         });
       })
-<<<<<<< HEAD
-
-=======
       .catch(() => {
         res.status(500).render("auth/login", {
           errorMessage:
@@ -66,7 +63,6 @@ router.post("/signup", (req, res) => {
           layout: false,
         });
       });
->>>>>>> 8ec9adb77dad161bdc7373129eb602e2e9adec1d
   });
 });
 
