@@ -14,7 +14,9 @@
         <div class="col-md-11">
           {{!-- Card Start--}}
           {{#each sortedByLikes}}
+
           <div class="card flex-md-column mb-4 box-shadow h-md-250 index-card">
+
             <div class="d-flex align-items-center index-right-card">
               <img class="card-img-right flex-auto d-none d-md-block" src="{{this.image}}" alt="Card image cap"
                 style="max-width: 50px; max-height:50px; border-radius: 50%; self-align:center; margin-left:20px;">
@@ -22,6 +24,7 @@
                 <h3 class="mb-0">
                   <a class="text-dark" href="/games/{{this._id}}">{{this.title}}</a>
                 </h3>
+
                 <div class="mb-1 text-muted">{{this.author}}<span class="mb-1 text-muted"> | <svg width="1em"
                       height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="blue"
                       xmlns="http://www.w3.org/2000/svg">
@@ -52,10 +55,16 @@
       <div class="row">
         <div class="col-12 col-sm-12">
 
+
           <div class="card bg-dark text-white index-card">
             <img class="card-img" src="{{gamesList.0.image}}" alt="Card image"
+<<<<<<< HEAD
               {{!-- style="max-width: 450px; max-height:400px"> --}}
               style="max-height:400px">
+=======
+              style="max-width: 450px; max-height:400px">
+
+>>>>>>> 9fcbc918395ab61ceef1abb6f04697a9ec545bb0
             <div class="card-img-overlay">
               <h5 class="card-title">{{gamesList.0.title}}</h5>
               <p class="card-text">{{gamesList.0.about}}</p>
