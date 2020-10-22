@@ -2,6 +2,10 @@ main {
   padding: 30px;
 }
 
+.myLatestUploads {
+  margin-top: 30px;
+}
+
 .index-title {
   color: white;
 }

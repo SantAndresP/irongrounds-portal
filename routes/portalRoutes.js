@@ -12,11 +12,6 @@ const UserModel = require("../models/userModel.js");
 const GameModel = require("../models/gameModel.js");
 const CommentModel = require("../models/commentModel.js");
 
-const { findById } = require("../models/userModel.js");
-const { route } = require("./authRoutes.js");
-const { search, render } = require("../app.js");
-const { config } = require("dotenv");
-
 //Cloundinary config
 const upload = require("../config/cloudinary.config");
 require("../config/cloudinary.config");
@@ -152,6 +147,7 @@ router.post("/profile/upload", parser.single("image"), (req, res, next) => {
 router.get("/games/:gameid", (req, res) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
+
   const id = req.params.gameid;
   let isLikedByUser = false;
 

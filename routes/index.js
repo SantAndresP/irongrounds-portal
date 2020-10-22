@@ -18,6 +18,8 @@ router.get("/", (req, res, next) => {
     res.locals.isLoggedIn = !!req.session.loggedUser;
 
     const sortedByLikes = JSON.parse(JSON.stringify(gamesList));
+    const latestUploads = JSON.parse(JSON.stringify(gamesList)).slice(-4);
+    const featuredGame = gamesList[5];
 
     sortedByLikes
       .sort((a, b) => {
@@ -25,10 +27,12 @@ router.get("/", (req, res, next) => {
       })
       .splice(7);
 
-    console.log("SORTED: ", sortedByLikes);
-    // console.log("NOT SORTED: ", gamesList);
-
-    res.render("index", { gamesList, sortedByLikes });
+    res.render("index", {
+      gamesList,
+      sortedByLikes,
+      latestUploads,
+      featuredGame,
+    });
   });
 });
 
