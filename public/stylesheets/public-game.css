@@ -21,7 +21,7 @@ main {
   display: flex;
 }
 
-.likes-counts{}
+
 
 form {
   margin-left: 20px;
@@ -41,7 +41,7 @@ form {
   width: 130px;
   align-self: flex-end;
   font-size: 15px;
-  
+  border-radius: 10px;
 }
 
 /*
