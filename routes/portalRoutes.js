@@ -150,7 +150,8 @@ router.get("/games/:gameid", (req, res) => {
         console.log(data);
         res.render("games/game", { data, isLikedByUser });
       } else {
-        console.log(data);
+        console.log("else", opinions);
+
         res.render("games/game", { data, opinions, isLikedByUser });
       }
     });
