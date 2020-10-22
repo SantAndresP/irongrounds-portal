@@ -8,7 +8,7 @@ document.addEventListener(
 
     formBtn.addEventListener("click", () => {
       console.log("edit clicked");
-      form.submit(); 
+      form.submit();
     });
 
     const formBtnDelete = document.querySelector("#form-btn-delete");
@@ -16,7 +16,7 @@ document.addEventListener(
 
     formBtnDelete.addEventListener("click", () => {
       console.log("delete clicked");
-      formDelete.submit(); 
+      formDelete.submit();
     });
   },
   false
@@ -80,3 +80,11 @@ function fullscreenChange() {
 }
 
 //<-- Modal setting -->
+const postBtn = document.querySelector("#post-btn");
+const postComment = document.querySelector(".post-comment");
+
+
+postBtn.addEventListener("click", () => {
+  console.log("Post Comment");
+  postComment.submit(); 
+});

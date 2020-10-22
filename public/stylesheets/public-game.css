@@ -20,6 +20,8 @@ main {
   display: flex;
 }
 
+
+
 form {
   margin-left: 20px;
 }
@@ -30,6 +32,15 @@ form {
 
 .myCommentInput {
   align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-comment > button{
+  width: 130px;
+  align-self: flex-end;
+  font-size: 15px;
+  border-radius: 10px;
 }
 
 /*

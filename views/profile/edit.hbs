@@ -10,13 +10,21 @@
 
   <div class="row justify-content-center">
     <div class="col-md-8 order-md-1">
-      <form class="needs-validation form-btn" method="POST" action="/profile/edit" id="form-edit">
-
+      <form class="needs-validation form-btn" method="POST" action="/profile/edit" id="form-edit"
+        enctype="multipart/form-data">
+        {{!-- 
         <div class="mb-3">
           <label for="image">Profile image</label>
           <div class="input-group">
             <input name="image" type="text" class="form-control" id="image" value="{{user.image}}">
           </div>
+        </div> --}}
+        <div class="mb-3">
+          <label for="image">Profile image</label>
+          <div class="input-group">
+              <input name="image" type="file" class="form-control" id="image" value="{{user.image}}">
+          </div>
+
         </div>
 
         <div class="mb-3">
@@ -53,10 +61,10 @@
       </form>
 
       {{#if message}}
-        <div class="alert alert-danger mt-3" role="alert">
-          <h4 class="alert-heading">Error</h4>
-          <p>{{message}}</p>
-        </div>
+      <div class="alert alert-danger mt-3" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>{{message}}</p>
+      </div>
       {{/if}}
     </div>
   </div>

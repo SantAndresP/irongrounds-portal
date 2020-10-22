@@ -17,6 +17,11 @@ const { route } = require("./authRoutes.js");
 const { search, render } = require("../app.js");
 const { config } = require("dotenv");
 
+//Cloundinary config
+const upload = require("../config/cloudinary.config");
+require("../config/cloudinary.config");
+const { parser, storage } = require("../config/cloudinary.config");
+
 /*
  * Profile routes.
  */
@@ -59,13 +64,15 @@ router.get("/profile/edit", (req, res) => {
   }
 });
 
-router.post("/profile/edit", (req, res, next) => {
+router.post("/profile/edit", parser.single("image"), (req, res, next) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
   const loggedUserId = req.session.loggedUser._id;
 
-  UserModel.findByIdAndUpdate(loggedUserId, { $set: req.body })
+  UserModel.findByIdAndUpdate(loggedUserId, {
+    $set: { image: req.file.path, ...req.body },
+  })
     .then((info) => {
       res.redirect("/profile");
     })
@@ -103,7 +110,7 @@ router.get("/profile/upload", (req, res) => {
 });
 
 // Uploading a game POST.
-router.post("/profile/upload", (req, res, next) => {
+router.post("/profile/upload", parser.single("image"), (req, res, next) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
@@ -112,6 +119,7 @@ router.post("/profile/upload", (req, res, next) => {
   const newGame = {
     author: username,
     authorId: _id,
+    image: req.file.path,
     ...req.body,
   };
 
@@ -146,7 +154,8 @@ router.get("/games/:gameid", (req, res) => {
         console.log(data);
         res.render("games/game", { data, isLikedByUser });
       } else {
-        console.log(data);
+        console.log("else", opinions);
+
         res.render("games/game", { data, opinions, isLikedByUser });
       }
     });
@@ -171,13 +180,15 @@ router.get("/games/:id/edit", (req, res) => {
 });
 
 // Editing game POST.
-router.post("/games/:id/edit", (req, res, next) => {
+router.post("/games/:id/edit", parser.single("image"), (req, res, next) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
   const id = req.params.id;
 
-  GameModel.findByIdAndUpdate(id, { $set: req.body })
+  GameModel.findByIdAndUpdate(id, {
+    $set: { image: req.file.path, ...req.body },
+  })
     .then((game) => {
       res.redirect("/profile");
     })
