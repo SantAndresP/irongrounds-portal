@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center">
     <div class="col-md-8 order-md-1">
-      <form class="needs-validation form-btn" method="POST" action="/games/{{game._id}}/edit" id="form-edit">
+      <form class="needs-validation form-btn" method="POST" action="/games/{{game._id}}/edit" id="form-edit" enctype="multipart/form-data">
 
         <div class="mb-3">
           <label for="title">Title</label>
@@ -32,7 +32,7 @@
 
           <div class="col-md-6 mb-3">
             <label for="image">Thumbnail</label>
-            <input name="image" type="text" class="form-control" id="image" value="{{game.image}}" required>
+            <input name="image" type="file" class="form-control" id="image" value="{{game.image}}" required>
           </div>
         </div>
 
