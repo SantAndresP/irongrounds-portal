@@ -2,7 +2,15 @@
  * Global.
  */
 body {
-  background-color: #f8f9fa; }
+  min-height: 100vh;
+  margin: 0;
+  background-repeat: no-repeat;
+  background: #141e30;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #020000, #7f01bf);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #21003d, black);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 #game-catalog-link {
   color: black; }
