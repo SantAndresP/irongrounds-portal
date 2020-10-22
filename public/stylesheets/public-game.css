@@ -3,6 +3,11 @@ main {
   justify-content: center;
   flex-direction: column;
   /* align-items: center; */
+  
+}
+
+.game-title{
+  color: black;
 }
 
 .jumbotron {
@@ -137,7 +142,7 @@ form {
   background: rgba(0, 0, 0, 0.05);
 }
 
-.game-main-content{
+/* .game-main-content{
   display: block;
 }
 
@@ -153,4 +158,4 @@ form {
   .small-screen{
     display: block;
   }
-}
+} */

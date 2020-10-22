@@ -1,4 +1,4 @@
-<section id="profile-body">
+{{!-- <section id="profile-body">
   <!-- User profile. -->
   <div id="user-profile">
     <div class="profile__info">
@@ -41,4 +41,55 @@
     </div>
   {{/if}}
 
-</section>
+</section> --}}
+
+<link href="/stylesheets/profile.css" rel="stylesheet">
+
+<main>
+
+  <!-- User information. -->
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">{{info.user.username}}</h1>
+      <p class="lead text-muted">{{info.user.about}}</p>
+
+    </div>
+  </section>
+
+  <!-- Games by the user. -->
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        {{#each info.game}}
+        <a href="/games/{{this._id}}" id="game-catalog-link">
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">
+                  <b>{{this.title}}</b>
+                  <br>{{this.about}}
+                </p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{{this.likes.length}} likes</small>
+
+                  <div class="btn-game-card">
+                    <a href="/games/{{this._id}}" class="btn btn-sm btn-outline-danger">Play</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        {{/each}}
+
+
+      </div>
+    </div>
+  </div>
+
+</main>
