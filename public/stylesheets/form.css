@@ -2,6 +2,10 @@ body {
   color: white;
 }
 
+#myModal, #form-delete {
+  color: black;
+}
+
 .container {
   max-width: 960px;
   margin-top: 50px;

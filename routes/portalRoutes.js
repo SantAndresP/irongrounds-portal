@@ -33,7 +33,6 @@ router.get("/profile", (req, res) => {
       .populate("authorId")
       .then((game) => {
         UserModel.findById({ _id: loggedUser._id }).then((user) => {
-          console.log(user, game);
           const info = { user, game };
           res.render("profile", { info });
         });
@@ -161,11 +160,8 @@ router.get("/games/:gameid", (req, res) => {
 
     CommentModel.findOne({ game: id }).then((opinions) => {
       if (!opinions || opinions.length === 0) {
-        console.log(data);
         res.render("games/game", { data, isLikedByUser });
       } else {
-        console.log("else", opinions);
-
         res.render("games/game", { data, opinions, isLikedByUser });
       }
     });
@@ -228,17 +224,17 @@ router.post("/games/:id/delete", (req, res, next) => {
   // Checking for user log-in.
   res.locals.isLoggedIn = !!req.session.loggedUser;
 
+  console.log("This is params!", req.params.id);
   const id = req.params.id;
   const { _id } = req.session.loggedUser;
 
   GameModel.findById(id).then((game) => {
     if (game.authorId == _id) {
-      GameModel.findOneAndRemove(id).then(() => {
-        console.log("deleted", id);
+      GameModel.findByIdAndDelete(id).then(() => {
         res.redirect("/profile");
       });
     } else {
-      res.render("permission-denied");
+      res.render("error");
     }
   });
 });
