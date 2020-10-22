@@ -1,4 +1,5 @@
 main {
+  height: 100vh;
   padding: 30px;
   background: #141e30; /* fallback for old browsers */
   background: -webkit-linear-gradient(

@@ -1,29 +1,31 @@
-<!-- Custom styles for `profile.hbs`. -->
 <link href="/stylesheets/profile.css" rel="stylesheet">
 
 <main>
 
   <!-- User information. -->
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">{{info.user.username}}</h1>
-      <p class="lead text-muted">{{info.user.about}}</p>
-      <p>
-        <a href="/profile/edit" class="btn btn-primary my-2">Edit profile</a>
-        <a href="/profile/upload" class="btn btn-info my-2">Upload game</a>
-      </p>
-    </div>
-  </section>
+  <div class="container-fluid d-flex justify-content-center">
+    <section class="jumbotron text-center myUserInformation mt-3">
+      <img class="myUserImage" src="{{info.user.image}}">
+      <div class="container">
+        <h1 class="jumbotron-heading">{{info.user.username}}</h1>
+        <p class="lead text-muted">{{info.user.about}}</p>
+        <p>
+          <a href="/profile/edit" class="btn btn-primary my-2">Edit profile</a>
+          <a href="/profile/upload" class="btn btn-info my-2">Upload game</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
 
   <!-- Games by the user. -->
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container">
 
       <div class="row">
 
         {{#each info.game}}
         <a href="/games/{{this._id}}" id="game-catalog-link">
-
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
               <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
@@ -54,6 +56,9 @@
   </div>
 
 </main>
+
+
+
 
 
 

@@ -4,33 +4,33 @@
 <!-- Main. -->
 <main role="main">
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container">
 
       <div class="row">
 
         {{#each games}}
-          <a href="/games/{{this._id}}" id="game-catalog-link">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">
-                    <b>{{this.title}}</b>
-                    <br>{{this.about}}
-                  </p>
+        <a href="/games/{{this._id}}" id="game-catalog-link">
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">
+                  <b>{{this.title}}</b>
+                  <br>{{this.about}}
+                </p>
 
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-game-card">
-                      <a type="button" href="/games/{{this._id}}" class="btn btn-sm btn-outline-danger">Play</a>
-                    </div>
-
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-game-card">
+                    <a type="button" href="/games/{{this._id}}" class="btn btn-sm btn-outline-danger">Play</a>
                   </div>
 
                 </div>
+
               </div>
             </div>
-          </a>
+          </div>
+        </a>
         {{/each}}
 
       </div>

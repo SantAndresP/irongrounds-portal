@@ -70,17 +70,31 @@ router.post("/profile/edit", parser.single("image"), (req, res, next) => {
 
   const loggedUserId = req.session.loggedUser._id;
 
-  UserModel.findByIdAndUpdate(loggedUserId, {
-    $set: { image: req.file.path, ...req.body },
-  })
-    .then((info) => {
-      res.redirect("/profile");
+  if (req.file) {
+    UserModel.findByIdAndUpdate(loggedUserId, {
+      $set: { image: req.file.path, ...req.body },
     })
-    .catch((err) => {
-      res
-        .status(500)
-        .render("profile/edit", { message: "Something went wrong." });
-    });
+      .then((info) => {
+        res.redirect("/profile");
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .render("profile/edit", { message: "Something went wrong." });
+      });
+  } else {
+    UserModel.findByIdAndUpdate(loggedUserId, {
+      $set: req.body,
+    })
+      .then((info) => {
+        res.redirect("/profile");
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .render("profile/edit", { message: "Something went wrong." });
+      });
+  }
 });
 
 /*
@@ -186,17 +200,31 @@ router.post("/games/:id/edit", parser.single("image"), (req, res, next) => {
 
   const id = req.params.id;
 
-  GameModel.findByIdAndUpdate(id, {
-    $set: { image: req.file.path, ...req.body },
-  })
-    .then((game) => {
-      res.redirect("/profile");
+  if (req.file) {
+    GameModel.findByIdAndUpdate(id, {
+      $set: { image: req.file.path, ...req.body },
     })
-    .catch((err) => {
-      res
-        .status(500)
-        .render("profile/edit-game", { message: "Something went wrong." });
-    });
+      .then((game) => {
+        res.redirect("/profile");
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .render("profile/edit-game", { message: "Something went wrong." });
+      });
+  } else {
+    GameModel.findByIdAndUpdate(id, {
+      $set: req.body,
+    })
+      .then((game) => {
+        res.redirect("/profile");
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .render("profile/edit-game", { message: "Something went wrong." });
+      });
+  }
 });
 
 // Deleting game.

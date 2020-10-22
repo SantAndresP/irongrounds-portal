@@ -2,20 +2,32 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* align-items: center; */
-  
+
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #020000,
+    #7f01bf
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #21003d,
+    black
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.game-title{
-  color: black;
+.game-title {
+  color: white;
 }
 
 .jumbotron {
   display: flex;
   justify-content: center;
+  background-color: transparent;
 }
 
 .btn-game-container {
+  margin-top: 35px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -24,8 +36,6 @@ main {
 .btn-game-card {
   display: flex;
 }
-
-
 
 form {
   margin-left: 20px;
@@ -41,7 +51,7 @@ form {
   flex-direction: column;
 }
 
-.post-comment > button{
+.post-comment > button {
   width: 130px;
   align-self: flex-end;
   font-size: 15px;

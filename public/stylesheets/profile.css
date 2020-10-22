@@ -1,5 +1,28 @@
+main {
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #020000,
+    #7f01bf
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #21003d,
+    black
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.myUserInformation {
+  padding: 10px;
+  width: 50%;
+}
+
 .btn-game-card {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.myUserImage{
+  border-radius: 10%;
 }

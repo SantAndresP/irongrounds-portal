@@ -2,9 +2,9 @@
 <link href="/stylesheets/public-game.css" rel="stylesheet">
 
 <main class="game-main-content">
-    <div class="jumbotron text-white ">
+    <div class="jumbotron text-white">
         <div>
-            <h1 class="display-4 font-italic game-title">{{data.title}}</h1>
+            <h1 class="display-4 game-title">{{data.title}}</h1>
 
             <!-- iFrame Container. -->
             <div>
@@ -14,7 +14,7 @@
 
             <!-- Buttons container. -->
             <div class="btn-game-container">
-                <strong class="text-muted likes-counts">{{data.likes.length}} LIKES</strong>
+                <strong class="likes-counts">{{data.likes.length}} LIKES</strong>
                 <div class="btn-game-card">
                     <button class="btn btn-lg btn-outline-danger game__fullscreen">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-fullscreen"
@@ -93,7 +93,7 @@
     </div>
 
     <!-- Comments Section. -->
-    <div class="row d-flex justify-content-center mt-100 mb-100">
+    <div class="d-flex justify-content-center mt-100 mb-100">
         <div class="col-lg-6">
             <div class="card">
 

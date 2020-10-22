@@ -6,7 +6,17 @@
 html,
 body {
   height: 100%;
-  background-image: url(https://i.imgur.com/6y5DJ0E.jpeg);
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #020000,
+    #7f01bf
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #21003d,
+    black
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 body {

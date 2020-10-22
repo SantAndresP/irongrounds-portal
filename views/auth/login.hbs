@@ -21,9 +21,7 @@
     </div>
 
     <div class="form-label-group">
-
       <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-
       <label for="inputEmail">Username</label>
     </div>
 
@@ -46,41 +44,3 @@
 
 
 </main>
-
-
-{{!-- <!-- Sign in form. -->
-<div class="auth__container">
-  <div class="auth__containerChild">
-    <h2 class="auth__header">Log in</h2>
-    <form class="ui large form" action="/login" method="POST">
-      <div class="field">
-        <label>Username</label>
-        <div class="ui left icon input">
-          <i class="user icon"></i>
-          <input type="text" name="username" placeholder="Username">
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Password</label>
-        <div class="ui left icon input">
-          <i class="lock icon"></i>
-          <input type="password" name="password" placeholder="Password">
-        </div>
-      </div>
-      <button class="ui fluid large orange submit button" type="submit">Log In</button>
-
-      {{#if error}}
-      <div class="ui negative message">
-        <div class="header">
-          Login failed.
-        </div>
-        <ul class="list">
-          <li>{{error}}</li>
-        </ul>
-      </div>
-      {{/if }}
-
-    </form>
-  </div>
-</div> --}}
