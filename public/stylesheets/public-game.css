@@ -8,7 +8,6 @@ main {
 .jumbotron {
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 .btn-game-container {

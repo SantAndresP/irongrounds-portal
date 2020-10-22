@@ -1,4 +1,4 @@
-<!-- SIGN UP IN FORM. -->
+<!-- SIGN UP FORM. -->
 
 <!-- Bootstrap CSS. -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -13,26 +13,20 @@
 <main>
   <form class="form-signin" action="/signup" method="POST">
     <div class="text-center mb-4">
-      <a href="/"><img class="mb-4" src="http://pixelartmaker.com/art/35b714ad9c30270.png" alt="" width="72"
+      <a href="/"><img class="mb-4" src="http://pixelartmaker.com/art/afe647981701cfc.png" alt="" width="72"
           height="72"></a>
       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
       <p>Already signed up? <a href="/login">Log in</a> and start having fun!</p>
     </div>
 
-    {{!-- <div class="form-label-group">
-      <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required
-        autofocus>
-      <label for="inputEmail">Email address</label>
-    </div> --}}
-
     <div class="form-label-group">
-      <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Email address" required
-        autofocus>
-      <label for="inputEmail">Email address</label>
+      <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputEmail">Username</label>
     </div>
 
     <div class="form-label-group">
-      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required
+        autofocus>
       <label for="inputPassword">Password</label>
     </div>
 
@@ -40,44 +34,3 @@
     <p class="mt-5 mb-3 text-muted text-center">&copy; thanks to Manish and Jorge ♥</p>
   </form>
 </main>
-
-
-{{!-- <!-- Sign up form. -->
-<div class="auth__container">
-  <div class="auth__containerChild">
-    <h2 class="auth__header">Sign up</h2>
-
-    <form class="ui large form" action="/signup" method="POST">
-
-      <div class="field" id="auth__field">
-        <label>Username</label>
-        <div class="ui left icon input">
-          <i class="user icon"></i>
-          <input type="text" name="username" placeholder="Username">
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Password</label>
-        <div class="ui left icon input">
-          <i class="lock icon"></i>
-          <input type="password" name="password" placeholder="Password">
-        </div>
-      </div>
-
-      <button class="ui fluid large orange submit button" type="submit">Sign Up</button>
-      {{#if error}}
-      <div class="ui negative message">
-        <i class="close icon"></i>
-        <div class="header">
-          Login failed.
-        </div>
-        <ul class="list">
-          <li>{{error}} 💣</li>
-        </ul>
-      </div>
-      {{/if }}
-    </form>
-  </div>
-
-</div> --}}
