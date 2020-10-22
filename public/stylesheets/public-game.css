@@ -136,3 +136,21 @@ form {
 .comment-widgets .comment-row:hover {
   background: rgba(0, 0, 0, 0.05);
 }
+
+.game-main-content{
+  display: block;
+}
+
+.small-screen{
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .game-main-content{
+    display: none;
+  }
+  
+  .small-screen{
+    display: block;
+  }
+}

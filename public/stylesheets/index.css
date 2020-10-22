@@ -1,13 +1,10 @@
 main {
   padding: 30px;
-  /* display: flex;
-  justify-content: space-evenly;
-  align-items: center; */
-  /* background-image: url(https://pbs.twimg.com/media/DzijA6EX0AAPsPM?format=png&name=900x900);
-  background-size: cover;
-  background-position:center;
-  background-repeat:  no-repeat;           */
-  background-color: #5D0D72;
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
 }
 
 
