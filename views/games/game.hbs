@@ -1,10 +1,10 @@
 <!-- Custom CSS for `game.hbs`. -->
 <link href="/stylesheets/public-game.css" rel="stylesheet">
 
-<main>
+<main class="game-main-content">
     <div class="jumbotron text-white ">
         <div>
-            <h1 class="display-4 font-italic">{{data.title}}</h1>
+            <h1 class="display-4 font-italic game-title">{{data.title}}</h1>
 
             <!-- iFrame Container. -->
             <div>
@@ -124,3 +124,7 @@
         </div>
     </div>
 </main>
+
+<div class="small-screen">
+    <h1>Please play on full screen</h1>
+</div>
