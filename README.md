@@ -1,4 +1,8 @@
-# Irongrounds Portal
+# IronHack Project | Website
+
+![Screenshot](https://i.imgur.com/nLx51vT.png)
+
+# Irongrounds
 
 ## Description
 
@@ -86,7 +90,4 @@ comment: String
 ## Links
 
 #### Git
-[Repository](https://github.com/SantAndresP/irongrounds-portal) | [Deployment](https://irongrounds.herokuapp.com/)
-
-#### Slides
-[Slides](https://docs.google.com/presentation/d/1fQ0tC4vUQOW51UFGZZ09WzBaA8g9M1w5f-pAgGDxgcU/edit?usp=sharing)
+[Repository](https://github.com/SantAndresP/irongrounds-portal) | [Deployment](https://irongrounds.herokuapp.com/) | [Slides](https://docs.google.com/presentation/d/1fQ0tC4vUQOW51UFGZZ09WzBaA8g9M1w5f-pAgGDxgcU/edit#slide=id.p)
