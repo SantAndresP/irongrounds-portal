@@ -1,6 +1,7 @@
 /*
  * Global.
  */
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -10,7 +11,8 @@ body {
   background: -webkit-linear-gradient(to top, #020000, #7f01bf);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #21003d, black);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 nav {
   background: #141e30;
@@ -18,13 +20,16 @@ nav {
   background: -webkit-linear-gradient(to top, #020000, #7f01bf);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, black, #21003d);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 .myLogo {
   margin-left: 10px;
-  margin-right: 20px; }
+  margin-right: 20px;
+}
 
 #game-catalog-link {
-  color: black; }
+  color: black;
+}
 
 /*# sourceMappingURL=style.css.map */
