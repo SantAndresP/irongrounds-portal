@@ -19,7 +19,7 @@ router.get("/", (req, res, next) => {
 
     const sortedByLikes = JSON.parse(JSON.stringify(gamesList));
     const latestUploads = JSON.parse(JSON.stringify(gamesList)).slice(-4);
-    const featuredGame = gamesList[5];
+    const featuredGame = gamesList[4];
 
     sortedByLikes
       .sort((a, b) => {
