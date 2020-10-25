@@ -19,7 +19,9 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-nav {
+header {
+  padding: 0 50px;
+
   background: #141e30; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
@@ -34,7 +36,6 @@ nav {
 }
 
 .myLogo {
-  margin-left: 10px;
   margin-right: 20px;
 }
 

@@ -12,7 +12,8 @@ body {
   background: linear-gradient(to top, #21003d, black);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
-nav {
+header {
+  padding: 0 50px;
   background: #141e30;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #020000, #7f01bf);
@@ -21,7 +22,6 @@ nav {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 .myLogo {
-  margin-left: 10px;
   margin-right: 20px; }
 
 #game-catalog-link {
