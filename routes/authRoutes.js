@@ -45,16 +45,19 @@ router.post("/signup", (req, res) => {
       .hash(password, salt)
       .then((hashedPass) => {
         UserModel.create({ username, password: hashedPass })
-        .then((user) => {
-          req.session.loggedUser = user;
-          res.redirect("/");
-        })
-        .catch((err) => {
-          console.log("reach",err);
-          res
-            .status(500)
-            .render("auth/login", { error: "Passwords do not match." });
-        });
+          .then((user) => {
+            req.session.loggedUser = user;
+            res.redirect("/");
+          })
+          .catch((err) => {
+            console.log("reach", err);
+            res
+              .status(500)
+              .render("auth/login", {
+                error: "Passwords do not match.",
+                layout: false,
+              });
+          });
       })
       .catch(() => {
         res.status(500).render("auth/login", {
