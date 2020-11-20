@@ -1,3 +1,4 @@
+/*    Full-screen configuration.    */
 document.addEventListener(
   "DOMContentLoaded",
   () => {
@@ -73,7 +74,7 @@ function fullscreenChange() {
   } else {
     console.log("exit fullscreen");
   }
-  // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
+  // Forces to reload iframe once to prevent the iframe source didn't care about trying to resize the window
   // comment this line and you will see
   const iframe = document.querySelector("iframe");
   iframe.src = iframe.src;
@@ -83,8 +84,7 @@ function fullscreenChange() {
 const postBtn = document.querySelector("#post-btn");
 const postComment = document.querySelector(".post-comment");
 
-
 postBtn.addEventListener("click", () => {
   console.log("Post Comment");
-  postComment.submit(); 
+  postComment.submit();
 });
