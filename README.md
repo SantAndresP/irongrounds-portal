@@ -6,7 +6,7 @@
 
 ## Description
 
-Online entertainment website, where hosts user-generated games.
+Online hosting platform for HTML5 games.
 
 ## Backlog
 - Implement ranking function for signed up users.
